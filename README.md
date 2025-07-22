@@ -1,6 +1,6 @@
 # SQL Helper
 
-**SQL Helper** é um projeto real em desenvolvimento, criado para uso interno da empresa **Transis Software**.  
+**SQL Helper** é um projeto real em desenvolvimento, criado para uso interno na empresa atual **Transis Software**.  
 Ele foi pensado para facilitar e agilizar consultas a bancos de dados **SQL Server**.
 
 > ⚠️ Este projeto está em desenvolvimento e serve também como parte do meu portfólio pessoal.  
