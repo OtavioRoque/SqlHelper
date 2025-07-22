@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SqlHelper"
         xmlns:userControls="clr-namespace:SqlHelper.UserControls"
         mc:Ignorable="d"
-        Title="SQL Helper" Height="600" Width="1000">
+        Title="SQL Helper" Height="600" Width="900">
     <DockPanel>
         <!-- StatusBar do rodapé -->
         <StatusBar DockPanel.Dock="Bottom" Height="Auto">
