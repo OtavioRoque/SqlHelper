@@ -1,0 +1,94 @@
+﻿<Window x:Class="SqlHelper.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SqlHelper"
+        xmlns:userControls="clr-namespace:SqlHelper.UserControls"
+        mc:Ignorable="d"
+        Title="SQL Helper" Height="600" Width="1000">
+    <DockPanel>
+        <!-- StatusBar do rodapé -->
+        <StatusBar DockPanel.Dock="Bottom" Height="Auto">
+            <StatusBarItem>
+                <ProgressBar x:Name="pbLoading" Height="25" Width="100" Margin="7 0 0 0"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- Grid principal, que divide a tela em duas partes -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" MinWidth="40"/>
+                <ColumnDefinition Width="*" MinWidth="40"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Lado esquerdo -->
+            <Grid Grid.Column="0" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- Cabecalho de definição de dabatase e filtro de colunas -->
+                <StackPanel Grid.Row="0" Orientation="Vertical">
+                    <ComboBox x:Name="cbDatabases" Margin="0 0 0 10"/>
+                    <userControls:TextboxComBotaoLimpar x:Name="txtFiltroColunas" Height="25"/>
+                </StackPanel>
+
+                <!-- Datagrid das tabelas -->
+                <DataGrid x:Name="dgTabelas" Grid.Row="1" Margin="0 10 0 0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tabela" Width="*"/>
+                        <DataGridTextColumn Header="Rows" Width="60"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!-- Lado direito -->
+            <TabControl x:Name="tabPrincipal" Grid.Column="1" Margin="0 10 10 10">
+
+                <!-- Consultas -->
+                <TabItem x:Name="tabItemConsultas" Header="Consultas">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+
+                        <!-- Datagrid dados da tabela selecionada -->
+                        <DataGrid x:Name="dgDadosTabela" Grid.Row="1" AutoGenerateColumns="True"/>
+                    </Grid>
+                </TabItem>
+
+                <!-- Auto select -->
+                <TabItem x:Name="tabItemAutoSelect" Header="Auto select">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Cabeçalho: opções de qual tipo de importação -->
+                        <userControls:RadioButtonsOpcoesImportacao Grid.Row="0"/>
+
+                        <TextBox x:Name="txtAutoSelect" 
+                                 Grid.Row="1"
+                                 Padding="2" 
+                                 FontFamily="Consolas" 
+                                 FontSize="14" 
+                                 VerticalScrollBarVisibility="Auto" 
+                                 HorizontalScrollBarVisibility="Auto" 
+                                 AcceptsReturn="True" 
+                                 AcceptsTab="True"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</Window>
