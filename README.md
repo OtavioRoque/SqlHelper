@@ -1,9 +1,7 @@
-# 🔍 SQL Helper
+# SQL Helper
 
 **SQL Helper** é um projeto real em desenvolvimento, criado para uso interno da empresa **Transis Software**.  
-Ele foi pensado para facilitar e agilizar consultas a bancos de dados **SQL Server**, servindo como uma ferramenta de apoio para desenvolvedores, suporte técnico e analistas.
-
-Atualmente, o foco está na interface e estrutura base, usando **C# com WPF**.
+Ele foi pensado para facilitar e agilizar consultas a bancos de dados **SQL Server**.
 
 > ⚠️ Este projeto está em desenvolvimento e serve também como parte do meu portfólio pessoal.  
 > Contribuições externas (*pull requests*) não são aceitas no momento.
@@ -16,7 +14,7 @@ Atualmente, o foco está na interface e estrutura base, usando **C# com WPF**.
 
 ## 🎯 Objetivo
 
-Criar uma ferramenta prática e leve que ajude na rotina de quem precisa consultar e entender dados direto do banco, sem depender de ferramentas grandes como o SSMS.
+Criar uma ferramenta prática e leve pra me ajudar na migração dos dados de novos clientes que já possuem um banco de dados no seu sistema atual.
 
 ## 👀 Status
 
@@ -27,5 +25,4 @@ Não está pronto para uso em produção.
 
 - Repositório público apenas para visualização.
 - Código sujeito a mudanças frequentes.
-- Futuramente, pode ser considerado open-source.
 
