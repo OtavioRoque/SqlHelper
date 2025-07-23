@@ -17,7 +17,7 @@
 
         <TextBox 
             x:Name="txtInput"
-            TextAlignment="Center"
+            TextAlignment="Left"
             Background="Transparent"
             Padding="2"
             TextChanged="txtInput_TextChanged"/>

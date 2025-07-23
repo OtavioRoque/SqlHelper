@@ -30,9 +30,9 @@ namespace SqlHelper.UserControls
         private void txtInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(txtInput.Text))
-                btnLimpar.Visibility = Visibility.Hidden;
+                tbPlaceholder.Visibility = Visibility.Visible;
             else
-                btnLimpar.Visibility = Visibility.Visible;
+                tbPlaceholder.Visibility = Visibility.Hidden;
         }
     }
 }
