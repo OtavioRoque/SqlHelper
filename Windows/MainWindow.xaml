@@ -10,7 +10,7 @@
     <DockPanel>
         
         <!-- StatusBar do rodapé -->
-        <userControls:StatusBar DockPanel.Dock="Bottom"/>
+        <userControls:StatusbarComProgressbar DockPanel.Dock="Bottom"/>
 
         <!-- Grid principal, que divide a tela em duas partes -->
         <Grid>
@@ -75,16 +75,8 @@
                         <!-- Cabeçalho: opções de qual tipo de importação -->
                         <userControls:RadioButtonsOpcoesImportacao Grid.Row="0"/>
 
-                        <TextBox 
-                            x:Name="txtAutoSelect" 
-                            Grid.Row="1"
-                            Padding="2" 
-                            FontFamily="Consolas" 
-                            FontSize="14" 
-                            VerticalScrollBarVisibility="Auto" 
-                            HorizontalScrollBarVisibility="Auto" 
-                            AcceptsReturn="True" 
-                            AcceptsTab="True"/>
+                        <!-- Txt com o código gerado no auto select -->
+                        <userControls:TextboxCodigoCopiavel x:Name="txtCodigoAutoSelect" Grid.Row="1"/>
                     </Grid>
                 </TabItem>
             </TabControl>

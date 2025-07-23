@@ -18,9 +18,9 @@ namespace SqlHelper.UserControls
     /// <summary>
     /// Interaction logic for StatusBar.xaml
     /// </summary>
-    public partial class StatusBar : UserControl
+    public partial class StatusbarComProgressbar : UserControl
     {
-        public StatusBar()
+        public StatusbarComProgressbar()
         {
             InitializeComponent();
         }
