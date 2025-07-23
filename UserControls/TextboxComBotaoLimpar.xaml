@@ -5,23 +5,30 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SqlHelper.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="40" d:DesignWidth="250">
+             d:DesignHeight="30" d:DesignWidth="200">
     <Grid Background="White">
-        <TextBlock Text="placeholder"
-                   Foreground="LightGray"/>
+        <TextBlock 
+            x:Name="tbPlaceholder"
+            Text="{Binding Placeholder}"
+            VerticalAlignment="Center"
+            Margin="5"
+            Foreground="LightGray"/>
 
-        <TextBox x:Name="txtInput"
-                 TextAlignment="Center"
-                 Background="Transparent"
-                 Padding="2"/>
+        <TextBox 
+            x:Name="txtInput"
+            TextAlignment="Center"
+            Background="Transparent"
+            Padding="2"
+            TextChanged="txtInput_TextChanged"/>
 
-        <Button x:Name="btnLimpar"
-                Width="35"
-                Content="X"
-                Background="Transparent"
-                Foreground="LightGray"
-                BorderThickness="0"
-                HorizontalAlignment="Right"
-                Click="btnLimpar_Click"/>
+        <Button 
+            x:Name="btnLimpar" 
+            Width="35"
+            Content="X"
+            Background="Transparent"
+            Foreground="LightGray"
+            BorderThickness="0"
+            HorizontalAlignment="Right"
+            Click="btnLimpar_Click"/>
     </Grid>
 </UserControl>

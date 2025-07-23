@@ -8,10 +8,15 @@
         mc:Ignorable="d"
         Title="SQL Helper" Height="600" Width="900">
     <DockPanel>
+        
         <!-- StatusBar do rodapé -->
         <StatusBar DockPanel.Dock="Bottom" Height="Auto">
             <StatusBarItem>
-                <ProgressBar x:Name="pbLoading" Height="25" Width="100" Margin="7 0 0 0"/>
+                <ProgressBar 
+                    x:Name="pbLoading" 
+                    Height="25" 
+                    Width="100" 
+                    Margin="7 0 0 0"/>
             </StatusBarItem>
         </StatusBar>
 
@@ -26,13 +31,14 @@
             <Grid Grid.Column="0" Margin="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Cabecalho de definição de dabatase e filtro de colunas -->
                 <StackPanel Grid.Row="0" Orientation="Vertical">
                     <ComboBox x:Name="cbDatabases" Margin="0 0 0 10"/>
-                    <userControls:TextboxComBotaoLimpar x:Name="txtFiltroColunas" Height="25"/>
+                    
+                    <userControls:TextboxComBotaoLimpar x:Name="txtFiltroColunas" Placeholder="Filtrar tabelas..." Height="25"/>
                 </StackPanel>
 
                 <!-- Datagrid das tabelas -->
@@ -77,15 +83,16 @@
                         <!-- Cabeçalho: opções de qual tipo de importação -->
                         <userControls:RadioButtonsOpcoesImportacao Grid.Row="0"/>
 
-                        <TextBox x:Name="txtAutoSelect" 
-                                 Grid.Row="1"
-                                 Padding="2" 
-                                 FontFamily="Consolas" 
-                                 FontSize="14" 
-                                 VerticalScrollBarVisibility="Auto" 
-                                 HorizontalScrollBarVisibility="Auto" 
-                                 AcceptsReturn="True" 
-                                 AcceptsTab="True"/>
+                        <TextBox 
+                            x:Name="txtAutoSelect" 
+                            Grid.Row="1"
+                            Padding="2" 
+                            FontFamily="Consolas" 
+                            FontSize="14" 
+                            VerticalScrollBarVisibility="Auto" 
+                            HorizontalScrollBarVisibility="Auto" 
+                            AcceptsReturn="True" 
+                            AcceptsTab="True"/>
                     </Grid>
                 </TabItem>
             </TabControl>
