@@ -10,15 +10,7 @@
     <DockPanel>
         
         <!-- StatusBar do rodapé -->
-        <StatusBar DockPanel.Dock="Bottom" Height="Auto">
-            <StatusBarItem>
-                <ProgressBar 
-                    x:Name="pbLoading" 
-                    Height="25" 
-                    Width="100" 
-                    Margin="7 0 0 0"/>
-            </StatusBarItem>
-        </StatusBar>
+        <userControls:StatusBar DockPanel.Dock="Bottom"/>
 
         <!-- Grid principal, que divide a tela em duas partes -->
         <Grid>

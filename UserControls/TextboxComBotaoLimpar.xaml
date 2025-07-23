@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:SqlHelper.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="200">
+    
     <Grid Background="White">
         <TextBlock 
             x:Name="tbPlaceholder"
@@ -22,7 +23,7 @@
             TextChanged="txtInput_TextChanged"/>
 
         <Button 
-            x:Name="btnLimpar" 
+            x:Name="btnLimpar"
             Width="35"
             Content="X"
             Background="Transparent"
