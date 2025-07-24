@@ -12,7 +12,7 @@
         <!-- StatusBar do rodapé -->
         <userControls:StatusbarComProgressbar DockPanel.Dock="Bottom"/>
 
-        <!-- Grid principal, que divide a tela em duas partes -->
+        <!-- Grid principal, que divide a tela em dois lados -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
@@ -43,7 +43,7 @@
                 </DataGrid>
             </Grid>
 
-            <!-- GridSplitter vertical que divide a tela grid principal -->
+            <!-- GridSplitter vertical que divie os dois lados da tela -->
             <GridSplitter 
                 Grid.Column="1"
                 Width="10"
