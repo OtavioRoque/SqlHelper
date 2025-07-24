@@ -43,7 +43,7 @@
                 </DataGrid>
             </Grid>
 
-            <!-- GridSplitter vertical que divie os dois lados da tela -->
+            <!-- GridSplitter vertical que divide os dois lados da tela -->
             <GridSplitter 
                 Grid.Column="1"
                 Width="10"
