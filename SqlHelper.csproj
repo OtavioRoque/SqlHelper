@@ -10,11 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="App.Local.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="App.Local.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\sql_helper.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utils\" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
   </ItemGroup>
 
 </Project>
