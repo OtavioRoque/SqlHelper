@@ -13,4 +13,8 @@
     <Content Include="Resources\sql_helper.ico" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
 </Project>
