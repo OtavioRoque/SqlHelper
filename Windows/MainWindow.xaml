@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="SQL Helper" Height="600" Width="1100">
     <DockPanel>
-        
+
         <!-- StatusBar do rodapé -->
         <userControls:StatusbarComProgressbar DockPanel.Dock="Bottom"/>
 
@@ -30,8 +30,8 @@
                 <!-- Cabecalho de definição de dabatase e filtro de colunas -->
                 <StackPanel Grid.Row="0" Orientation="Vertical">
                     <ComboBox x:Name="cbDatabases" Margin="0 0 0 10"/>
-                    
-                    <userControls:TextboxComBotaoLimpar x:Name="txtFiltroColunas" Placeholder="Filtrar tabelas..." Height="25"/>
+
+                    <userControls:TextboxComBotaoLimpar x:Name="txtFiltroMetadata" Placeholder="Filtrar metadata..."/>
                 </StackPanel>
 
                 <!-- Datagrid das tabelas -->
@@ -58,18 +58,44 @@
                 <TabItem x:Name="tabItemConsultas" Header="Consultas">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <!-- GridSplitter horizontal que divide a aba consultas -->
-                        <GridSplitter 
-                            Grid.Row="1"
-                            Height="10"
-                            Background="Transparent"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"/>
+                        <!-- Filtros de busca da tabela selecionada -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                <userControls:TextboxComBotaoLimpar 
+                                    x:Name="txtBusca"
+                                    Width="200"
+                                    Margin="0 7 10 10"
+                                    Placeholder="Buscar..."/>
+
+                                <RadioButton 
+                                    Name="rbBuscarDados"
+                                    Content="Dados"
+                                    VerticalAlignment="Center"
+                                    Margin="0 0 10 0"/>
+
+                                <RadioButton 
+                                    Name="rbBuscarColunas"
+                                    Content="Colunas"
+                                    VerticalAlignment="Center"
+                                    Margin="0 0 10 0"/>
+
+                                <Button
+                                    x:Name="btnBuscar"
+                                    Content="Buscar"
+                                    Height="26"
+                                    Padding="2"
+                                    Width="Auto"/>
+                            </StackPanel>
+                        </Grid>
 
                         <!-- Datagrid dados da tabela selecionada -->
                         <DataGrid x:Name="dgDadosTabela" Grid.Row="2" AutoGenerateColumns="True"/>
