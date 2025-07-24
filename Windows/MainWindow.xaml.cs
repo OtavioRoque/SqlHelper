@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using SqlHelper.Utils;
+using System.Windows;
 
 namespace SqlHelper.Windows
 {
