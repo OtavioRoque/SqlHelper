@@ -27,17 +27,14 @@ namespace SqlHelper.Windows
                 "BDRepr", "BDTemp", "master", "model", "msdb", "tempdb"
             };
 
-            string sql = $@"
-                SELECT * FROM sys.databases 
-                WHERE name NOT IN ({string.Join(", ", bancosIgnorar.Select(banco => $"'{banco}'"))})
-                ORDER BY name";
+            string sql = $@"select * from tabela";
 
             using DataTable dt = DB.GetDataTable(sql);
-            foreach (DataRow row in dt.Rows)
             {
-                string databaseName = row["name"].ToString();
-                if (!string.IsNullOrEmpty(databaseName))
-                    cbDatabases.Items.Add(databaseName);
+                foreach (DataRow row in dt.Rows)
+                {
+                    string databaseName = row["name"].ToString();
+                }
             }
         }
     }
