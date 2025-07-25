@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data;
+﻿using System.Data;
 using Microsoft.Data.SqlClient;
+using SqlHelper.Config;
 
 #pragma warning disable CS8601
 #pragma warning disable CS8603
