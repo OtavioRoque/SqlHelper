@@ -58,7 +58,6 @@ namespace SqlHelper.Utils
 
                 conn.Open();
                 return cmd.ExecuteNonQuery();
-
             }
             catch (Exception ex)
             {
