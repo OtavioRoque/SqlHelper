@@ -1,28 +1,29 @@
 # SQL Helper
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Platform](https://img.shields.io/badge/plataforma-Windows-blue)
 
-**SQL Helper** é um projeto real em desenvolvimento, criado para uso interno na empresa **Transis Software**.  
-Ele foi pensado para facilitar e agilizar consultas a bancos de dados **SQL Server**.
+**SQL Helper** é uma ferramenta interna desenvolvida por mim na empresa **Transis Software**.
+Este projeto faz parte do meu portfólio pessoal.
 
-> ⚠️ Este projeto está em desenvolvimento e serve também como parte do meu portfólio pessoal.  
-> Contribuições externas (*pull requests*) não são aceitas no momento.
+> ⚠️ Pull requests não serão aceitas no momento.
 
 ## 🛠️ Tecnologias utilizadas
+- C#.
+- WPF.
+- SQL Server.
 
-- C#
-- WPF (.NET)
-- SQL Server (conexão e consulta)
-
+## 📁 Pastas
+- **Windows:** Janelas do programa.
+- **UserControls:** Controles personalizados.
+- **Utils:** Classes estáticas com métodos auxiliares.
+- **Config:** Definições de connection string.
+- **Resources:** Ícones.
+- **Properties:** AssemblyInfo.
+  
 ## 🎯 Objetivo
-
-Criar uma ferramenta prática e leve pra me ajudar na migração dos dados de novos clientes que já possuem um banco de dados no seu sistema atual.
-
-## 👀 Status
-
-Projeto em desenvolvimento inicial.  
-Não está pronto para uso em produção.
+O objetivo principal é criar uma ferramenta leve e prática para agilizar consultas em massa a bancos de dados SQL Server, facilitando o meu processo interno de migração de dados.
 
 ## 📌 Observações
-
 - Repositório público apenas para visualização.
 - Código sujeito a mudanças frequentes.
-
+- As funcionalidades são pensadas para otimizar o meu processo interno de migração de dados entre bancos SQL Server.
