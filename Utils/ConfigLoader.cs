@@ -7,7 +7,7 @@ namespace SqlHelper.Utils
     {
         public static string? ObterConnectionString(string nome)
         {
-            string localConfigPath = "App.Local.config";
+            string localConfigPath = "Config/App.Local.config";
 
             if (File.Exists(localConfigPath))
             {
