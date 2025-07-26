@@ -14,9 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Config\App.Local.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\sql_helper.ico" />
   </ItemGroup>
 
