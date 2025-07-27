@@ -6,21 +6,31 @@ using Microsoft.Data.SqlClient;
 
 namespace SqlHelper.Utils
 {
+    /// <summary>
+    /// Contém métodos utilitários para acessar o banco de dados.
+    /// São úteis pra não ter que abrir uma SqlConnection manualmente.
+    /// </summary>
+    /// <remarks>
+    /// Usar com o alias DB.NomeMetodo().
+    /// </remarks>
     public static class DatabaseAccess
     {
-        private static readonly string connectionString = ConfigLoader.ObterConnectionString("ConexaoLocal");
+        private static readonly string _connectionString = ConfigLoader.ObterConnectionString("ConexaoLocal");
 
         /// <summary>
-        /// Usar quando precisar de Bindings
+        /// Ler uma tabela do banco de dados usando uma consulta SQL.
         /// </summary>
+        /// <remarks>
+        /// Usar quando precisar fazer Bindings dos dados lidos.
+        /// </remarks>
         /// <returns>
-        /// Um DataTable preenchido com os dados retornados pela consulta SQL.
+        /// Um DataTable contendo os resultados da consulta SQL.
         /// </returns>
-        public static DataTable GetDataTable(string sql)
+        public static DataTable FillDataTable(string sql)
         {
             try
             {
-                using var conn = new SqlConnection(connectionString);
+                using var conn = new SqlConnection(_connectionString);
                 using var cmd = new SqlCommand(sql, conn);
                 using var adapter = new SqlDataAdapter(cmd);
 
@@ -34,11 +44,17 @@ namespace SqlHelper.Utils
             }
         }
 
-        public static string GetScalar(string sql)
+        /// <summary>
+        /// Buscar um único valor do banco de dados usando uma consulta SQL.
+        /// </summary>
+        /// <returns>
+        /// Uma string contendo o resultado da consulta SQL.
+        /// </returns>
+        public static string ExecuteScalar(string sql)
         {
             try
             {
-                using var conn = new SqlConnection(connectionString);
+                using var conn = new SqlConnection(_connectionString);
                 using var cmd = new SqlCommand(sql, conn);
 
                 conn.Open();
@@ -50,11 +66,17 @@ namespace SqlHelper.Utils
             }
         }
 
-        public static int Execute(string sql)
+        /// <summary>
+        /// Executar comandos SQL de INSERT, DELETE, UPDATE, etc.
+        /// </summary>
+        /// <returns>
+        /// 1 se o comando afetou linhas, 0 se não afetou nenhuma linha.
+        /// </returns>
+        public static int ExecuteNonQuery(string sql)
         {
             try
             {
-                using var conn = new SqlConnection(connectionString);
+                using var conn = new SqlConnection(_connectionString);
                 using var cmd = new SqlCommand(sql, conn);
 
                 conn.Open();
@@ -65,38 +87,6 @@ namespace SqlHelper.Utils
                 throw LancarExcecaoComandoSql(sql, ex);
             }
         }
-
-        public static List<Dictionary<string, object>> GetDataList(string sql)
-        {
-            var lista = new List<Dictionary<string, object>>();
-
-            try
-            {
-                using var conn = new SqlConnection(connectionString);
-                using var cmd = new SqlCommand(sql, conn);
-                conn.Open();
-                using var reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    var linha = new Dictionary<string, object>();
-
-                    for (int i = 0; i < reader.FieldCount; i++)
-                    {
-                        linha[reader.GetName(i)] = reader.GetValue(i);
-                    }
-
-                    lista.Add(linha);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw LancarExcecaoComandoSql(sql, ex);
-            }
-
-            return lista;
-        }
-
 
         private static Exception LancarExcecaoComandoSql(string comandoSql, Exception exception)
         {
