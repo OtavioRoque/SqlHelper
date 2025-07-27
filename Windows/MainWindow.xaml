@@ -16,7 +16,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -46,7 +46,6 @@
             <!-- GridSplitter vertical que divide os dois lados da tela -->
             <GridSplitter 
                 Grid.Column="1"
-                Width="10"
                 Background="Transparent"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"/>
