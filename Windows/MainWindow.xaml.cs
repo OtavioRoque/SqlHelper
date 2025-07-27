@@ -29,13 +29,13 @@ namespace SqlHelper.Windows
 
             string sql = $@"select * from tabela";
 
-            using DataTable dt = DB.GetDataTable(sql);
-            {
-                foreach (DataRow row in dt.Rows)
-                {
-                    string databaseName = row["name"].ToString();
-                }
-            }
+            //using DataTable dt = DB.FillDataTable(sql);
+            //{
+            //    foreach (DataRow row in dt.Rows)
+            //    {
+            //        string databaseName = row["name"].ToString();
+            //    }
+            //}
         }
     }
 }
