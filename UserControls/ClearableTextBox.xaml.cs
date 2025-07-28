@@ -19,7 +19,7 @@ namespace SqlHelper.UserControls
             set { _placeHolder = value; }
         }
 
-        private void btnLimpar_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             txtInput.Clear();
             txtInput.Focus();

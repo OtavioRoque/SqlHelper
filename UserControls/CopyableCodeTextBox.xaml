@@ -8,8 +8,8 @@
              d:DesignHeight="200" d:DesignWidth="500">
     <Grid>
         <TextBox 
-            x:Name="txtCodigo"
-            Text="{Binding ConteudoTexbox}"
+            x:Name="txtCode"
+            Text="{Binding TextBoxContent}"
             Padding="2"
             FontFamily="Consolas"
             FontSize="14"
@@ -17,10 +17,10 @@
             HorizontalScrollBarVisibility="Auto"
             AcceptsReturn="True"
             AcceptsTab="True"
-            TextChanged="txtCodigo_TextChanged"/>
+            TextChanged="txtCode_TextChanged"/>
 
         <Button 
-            x:Name="btnCopiar"
+            x:Name="btnCopy"
             Content="📋Copiar"
             Height="50"
             Width="150"
@@ -31,7 +31,7 @@
             Background="Transparent"
             BorderThickness="0"
             Opacity="0.2"
-            Click="btnCopiar_Click"
-            MouseEnter="btnCopiar_MouseEnter"/>
+            Click="btnCopy_Click"
+            MouseEnter="btnCopy_MouseEnter"/>
     </Grid>
 </UserControl>

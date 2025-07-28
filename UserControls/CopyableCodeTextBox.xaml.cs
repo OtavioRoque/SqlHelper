@@ -12,35 +12,35 @@ namespace SqlHelper.UserControls
             DataContext = this;
         }
 
-        private string conteudoTextbox;
+        private string textBoxContent;
 
-        public string ConteudoTexbox
+        public string TextBoxContent
         {
-            get { return conteudoTextbox; }
-            set { conteudoTextbox = value; }
+            get { return textBoxContent; }
+            set { textBoxContent = value; }
         }
 
         #region Eventos
 
-        private void btnCopiar_Click(object sender, RoutedEventArgs e)
+        private void btnCopy_Click(object sender, RoutedEventArgs e)
         {
-            txtCodigo.SelectAll();
-            txtCodigo.Copy();
+            txtCode.SelectAll();
+            txtCode.Copy();
 
-            btnCopiar.Content = "✅Copiado!";
-            btnCopiar.IsHitTestVisible = false;
+            btnCopy.Content = "✅Copiado!";
+            btnCopy.IsHitTestVisible = false;
         }
 
-        private void btnCopiar_MouseEnter(object sender, MouseEventArgs e)
+        private void btnCopy_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (btnCopiar.IsHitTestVisible)
+            if (btnCopy.IsHitTestVisible)
                 this.Cursor = Cursors.Hand;
         }
 
-        private void txtCodigo_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtCode_TextChanged(object sender, TextChangedEventArgs e)
         {
-            btnCopiar.Content = "📋Copiar";
-            btnCopiar.IsHitTestVisible = true;
+            btnCopy.Content = "📋Copiar";
+            btnCopy.IsHitTestVisible = true;
         }
 
         #endregion

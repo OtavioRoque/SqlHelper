@@ -23,13 +23,13 @@
             TextChanged="txtInput_TextChanged"/>
 
         <Button 
-            x:Name="btnLimpar"
+            x:Name="btnClear"
             Width="35"
             Content="X"
             Background="Transparent"
             Foreground="LightGray"
             BorderThickness="0"
             HorizontalAlignment="Right"
-            Click="btnLimpar_Click"/>
+            Click="btnClear_Click"/>
     </Grid>
 </UserControl>
