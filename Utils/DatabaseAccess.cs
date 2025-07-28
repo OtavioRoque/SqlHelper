@@ -40,7 +40,7 @@ namespace SqlHelper.Utils
             }
             catch (Exception ex)
             {
-                throw LancarExcecaoComandoSql(sql, ex);
+                throw ThrowSqlCommandException(sql, ex);
             }
         }
 
@@ -81,7 +81,7 @@ namespace SqlHelper.Utils
             }
             catch (Exception ex)
             {
-                throw LancarExcecaoComandoSql(sql, ex);
+                throw ThrowSqlCommandException(sql, ex);
             }
         }
 
@@ -103,11 +103,11 @@ namespace SqlHelper.Utils
             }
             catch (Exception ex)
             {
-                throw LancarExcecaoComandoSql(sql, ex);
+                throw ThrowSqlCommandException(sql, ex);
             }
         }
 
-        private static Exception LancarExcecaoComandoSql(string comandoSql, Exception exception)
+        private static Exception ThrowSqlCommandException(string comandoSql, Exception exception)
         {
             string mensagem = $"Erro ao executar comando SQL: {comandoSql}. Detalhes: {exception.Message}";
             return new Exception(mensagem, exception);
