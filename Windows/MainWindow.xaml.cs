@@ -21,21 +21,11 @@ namespace SqlHelper.Windows
 
         private void CarregarComboboxDatabases()
         {
-            var bancosIgnorar = new string[]
-            {
-                "BDCreceber", "BDHistorico", "BDImagens", "BDOfic", "BDPecas", "BDRelatorio",
-                "BDRepr", "BDTemp", "master", "model", "msdb", "tempdb"
-            };
+            string sql = "SELECT name FROM sys.databases ORDER BY name";
+            DataTable dt = DB.FillDataTable(sql);
 
-            string sql = $@"select * from tabela";
-
-            //using DataTable dt = DB.FillDataTable(sql);
-            //{
-            //    foreach (DataRow row in dt.Rows)
-            //    {
-            //        string databaseName = row["name"].ToString();
-            //    }
-            //}
+            cbDatabases.ItemsSource = dt.DefaultView;
+            cbDatabases.DisplayMemberPath = "name";
         }
     }
 }
