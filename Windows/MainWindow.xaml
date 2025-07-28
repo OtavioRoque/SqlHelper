@@ -10,7 +10,7 @@
     <DockPanel>
 
         <!-- StatusBar do rodapé -->
-        <userControls:StatusbarComProgressbar DockPanel.Dock="Bottom"/>
+        <userControls:ProgressStatusBar DockPanel.Dock="Bottom"/>
 
         <!-- Grid principal, que divide a tela em dois lados -->
         <Grid>
@@ -31,11 +31,11 @@
                 <StackPanel Grid.Row="0" Orientation="Vertical">
                     <ComboBox x:Name="cbDatabases" Margin="0 0 0 10"/>
 
-                    <userControls:TextboxComBotaoLimpar x:Name="txtFiltroMetadata" Placeholder="Filtrar metadata..."/>
+                    <userControls:ClearableTextBox x:Name="txtTableFilter" Placeholder="Filtrar tabelas..."/>
                 </StackPanel>
 
                 <!-- Datagrid das tabelas -->
-                <DataGrid x:Name="dgTabelas" Grid.Row="1" Margin="0 10 0 0">
+                <DataGrid x:Name="dgTables" Grid.Row="1" Margin="0 10 0 0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Tabela" Width="*"/>
                         <DataGridTextColumn Header="Rows" Width="60"/>
@@ -51,10 +51,10 @@
                 VerticalAlignment="Stretch"/>
 
             <!-- Lado direito -->
-            <TabControl x:Name="tabPrincipal" Grid.Column="2" Margin="0 10 10 10">
+            <TabControl x:Name="tabControlMain" Grid.Column="2" Margin="0 10 10 10">
 
                 <!-- Consultas -->
-                <TabItem x:Name="tabItemConsultas" Header="Consultas">
+                <TabItem x:Name="tabItemSearch" Header="Consultas">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -69,26 +69,26 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                                <userControls:TextboxComBotaoLimpar 
-                                    x:Name="txtBusca"
+                                <userControls:ClearableTextBox 
+                                    x:Name="txtSearch"
                                     Width="200"
                                     Margin="0 7 10 10"
                                     Placeholder="Buscar..."/>
 
                                 <RadioButton 
-                                    Name="rbBuscarDados"
+                                    x:Name="rbSearchData"
                                     Content="Dados"
                                     VerticalAlignment="Center"
                                     Margin="0 0 10 0"/>
 
                                 <RadioButton 
-                                    Name="rbBuscarColunas"
+                                    x:Name="rbSearchColumns"
                                     Content="Colunas"
                                     VerticalAlignment="Center"
                                     Margin="0 0 10 0"/>
 
                                 <Button
-                                    x:Name="btnBuscar"
+                                    x:Name="btnSearch"
                                     Content="Buscar"
                                     Height="26"
                                     Padding="2"
@@ -97,7 +97,7 @@
                         </Grid>
 
                         <!-- Datagrid dados da tabela selecionada -->
-                        <DataGrid x:Name="dgDadosTabela" Grid.Row="2" AutoGenerateColumns="True"/>
+                        <DataGrid x:Name="dgTableData" Grid.Row="2" AutoGenerateColumns="True"/>
                     </Grid>
                 </TabItem>
 
@@ -110,10 +110,10 @@
                         </Grid.RowDefinitions>
 
                         <!-- Cabeçalho: opções de qual tipo de importação -->
-                        <userControls:RadioButtonsOpcoesImportacao Grid.Row="0"/>
+                        <userControls:ImportOptionsRadioButtons Grid.Row="0"/>
 
                         <!-- Txt com o código gerado no auto select -->
-                        <userControls:TextboxCodigoCopiavel x:Name="txtCodigoAutoSelect" Grid.Row="1"/>
+                        <userControls:CopyableCodeTextBox x:Name="txtAutoSelectCode" Grid.Row="1"/>
                     </Grid>
                 </TabItem>
             </TabControl>

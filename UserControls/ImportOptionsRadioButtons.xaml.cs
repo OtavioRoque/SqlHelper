@@ -2,9 +2,9 @@
 
 namespace SqlHelper.UserControls
 {
-    public partial class RadioButtonsOpcoesImportacao : UserControl
+    public partial class ImportOptionsRadioButtons : UserControl
     {
-        public RadioButtonsOpcoesImportacao()
+        public ImportOptionsRadioButtons()
         {
             InitializeComponent();
         }

@@ -1,13 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-#pragma warning disable CS8618
-
 namespace SqlHelper.UserControls
 {
-    public partial class TextboxComBotaoLimpar : UserControl
+    public partial class ClearableTextBox : UserControl
     {
-        public TextboxComBotaoLimpar()
+        public ClearableTextBox()
         {
             InitializeComponent();
             DataContext = this;

@@ -4,9 +4,9 @@ using System.Windows.Input;
 
 namespace SqlHelper.UserControls
 {
-    public partial class TextboxCodigoCopiavel : UserControl
+    public partial class CopyableCodeTextBox : UserControl
     {
-        public TextboxCodigoCopiavel()
+        public CopyableCodeTextBox()
         {
             InitializeComponent();
             DataContext = this;
