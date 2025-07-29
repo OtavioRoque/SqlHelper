@@ -19,6 +19,8 @@ namespace SqlHelper.UserControls
             set { _placeHolder = value; }
         }
 
+        #region Eventos
+
         private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             txtInput.Clear();
@@ -32,5 +34,7 @@ namespace SqlHelper.UserControls
             else
                 tbPlaceholder.Visibility = Visibility.Hidden;
         }
+
+        #endregion
     }
 }
