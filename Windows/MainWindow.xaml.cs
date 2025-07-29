@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 
 #pragma warning disable CS8600
 
@@ -27,6 +28,32 @@ namespace SqlHelper.Windows
             cbDatabases.ItemsSource = dt.DefaultView;
             cbDatabases.DisplayMemberPath = "name";
             cbDatabases.SelectedValuePath = "name";
+        }
+
+        private string GetSelectedDatabase()
+        {
+            return cbDatabases.SelectedValue.ToString() ?? string.Empty;
+        }
+
+        private bool TryGetSelectedDatabase(out string databaseName)
+        {
+            databaseName = GetSelectedDatabase();
+            return !string.IsNullOrEmpty(databaseName);
+        }
+
+        private void cbDatabases_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!TryGetSelectedDatabase(out string databaseName))
+                return;
+
+            string sql = $@"
+                SELECT t.name AS Tabela, SUM(p.rows) AS Rows
+                FROM {databaseName}.sys.tables t
+                JOIN {databaseName}.sys.partitions p ON t.object_id = p.object_id
+                WHERE p.index_id IN (0,1) AND Rows > 0
+                GROUP BY t.name";
+
+            dgTables.ItemsSource = DB.FillDataTable(sql).DefaultView;
         }
     }
 }

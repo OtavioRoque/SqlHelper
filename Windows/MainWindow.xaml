@@ -29,18 +29,17 @@
 
                 <!-- Cabecalho de definição de dabatase e filtro de colunas -->
                 <StackPanel Grid.Row="0" Orientation="Vertical">
-                    <ComboBox x:Name="cbDatabases" Margin="0 0 0 10"/>
+                    <ComboBox x:Name="cbDatabases" Margin="0 0 0 10" SelectionChanged="cbDatabases_SelectionChanged"/>
 
                     <userControls:ClearableTextBox x:Name="txtTableFilter" Placeholder="Filtrar tabelas..."/>
                 </StackPanel>
 
                 <!-- Datagrid das tabelas -->
-                <DataGrid x:Name="dgTables" Grid.Row="1" Margin="0 10 0 0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Tabela" Width="*"/>
-                        <DataGridTextColumn Header="Rows" Width="60"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <DataGrid 
+                    x:Name="dgTables"
+                    Grid.Row="1"
+                    Margin="0 10 0 0"
+                    HeadersVisibility="Column"/>
             </Grid>
 
             <!-- GridSplitter vertical que divide os dois lados da tela -->
