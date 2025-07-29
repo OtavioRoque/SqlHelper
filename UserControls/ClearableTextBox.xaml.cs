@@ -19,7 +19,7 @@ namespace SqlHelper.UserControls
             set { _placeHolder = value; }
         }
 
-        #region Eventos
+        #region Events
 
         private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {

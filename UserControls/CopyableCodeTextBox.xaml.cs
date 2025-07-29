@@ -20,7 +20,7 @@ namespace SqlHelper.UserControls
             set { textBoxContent = value; }
         }
 
-        #region Eventos
+        #region Events
 
         private void btnCopy_Click(object sender, RoutedEventArgs e)
         {

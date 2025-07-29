@@ -15,10 +15,31 @@ namespace SqlHelper.Windows
             this.Loaded += MainWindow_Loaded;
         }
 
+        #region Events
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCbDatabases();
         }
+
+        private void cbDatabases_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!TryGetSelectedDatabase(out string databaseName))
+                return;
+
+            string sql = $@"
+                SELECT t.name AS Tabela, SUM(p.rows) AS Rows
+                FROM {databaseName}.sys.tables t
+                JOIN {databaseName}.sys.partitions p ON t.object_id = p.object_id
+                WHERE p.index_id IN (0,1) AND Rows > 0
+                GROUP BY t.name";
+
+            dgTables.ItemsSource = DB.FillDataTable(sql).DefaultView;
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private void LoadCbDatabases()
         {
@@ -41,19 +62,6 @@ namespace SqlHelper.Windows
             return !string.IsNullOrEmpty(databaseName);
         }
 
-        private void cbDatabases_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!TryGetSelectedDatabase(out string databaseName))
-                return;
-
-            string sql = $@"
-                SELECT t.name AS Tabela, SUM(p.rows) AS Rows
-                FROM {databaseName}.sys.tables t
-                JOIN {databaseName}.sys.partitions p ON t.object_id = p.object_id
-                WHERE p.index_id IN (0,1) AND Rows > 0
-                GROUP BY t.name";
-
-            dgTables.ItemsSource = DB.FillDataTable(sql).DefaultView;
-        }
+        #endregion
     }
 }
