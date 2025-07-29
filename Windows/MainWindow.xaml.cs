@@ -16,10 +16,10 @@ namespace SqlHelper.Windows
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            CarregarComboboxDatabases();
+            LoadCbDatabases();
         }
 
-        private void CarregarComboboxDatabases()
+        private void LoadCbDatabases()
         {
             string sql = "SELECT name FROM sys.databases ORDER BY name";
             DataTable dt = DB.FillDataTable(sql);
