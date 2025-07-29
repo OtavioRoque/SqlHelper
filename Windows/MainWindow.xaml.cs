@@ -26,6 +26,7 @@ namespace SqlHelper.Windows
 
             cbDatabases.ItemsSource = dt.DefaultView;
             cbDatabases.DisplayMemberPath = "name";
+            cbDatabases.SelectedValuePath = "name";
         }
     }
 }
