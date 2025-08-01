@@ -25,5 +25,4 @@ O objetivo principal é criar uma ferramenta leve e prática para agilizar consu
 
 ## 📌 Observações
 - Repositório público apenas para visualização.
-- Código sujeito a mudanças frequentes.
 - As funcionalidades são pensadas para otimizar o meu processo interno de migração de dados entre bancos SQL Server.
