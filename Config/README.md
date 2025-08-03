@@ -11,5 +11,4 @@ Esta pasta contém os arquivos de configuração da connection string usados pel
 
 - Arquivo **não versionado** (está no `.gitignore`).
 - Deve conter sua connection string **real**.
-- Copie o `App.config` e renomeie como `App.Local.config`, ou crie manualmente com a mesma estrutura.
-- Exemplo de estrutura:
+- Copie o `App.config` e renomeie como `App.Local.config`, então adapte para a sua forma de login ao SQL Server.
