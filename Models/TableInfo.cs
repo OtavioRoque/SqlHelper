@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SqlHelper.Models
 {
-    internal class Database
+    internal class TableInfo
     {
+        public string Name { get; }
+        public long RowCount { get; }
+        public
     }
 }
