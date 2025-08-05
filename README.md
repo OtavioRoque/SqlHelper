@@ -13,12 +13,13 @@ Este projeto faz parte do meu portfólio pessoal.
 - SQL Server.
 
 ## 📁 Pastas
-- **Windows:** Janelas do programa.
-- **UserControls:** Controles personalizados.
-- **Utils:** Classes estáticas com métodos auxiliares.
-- **Config:** Definições de connection string.
-- **Resources:** Ícones.
-- **Properties:** AssemblyInfo.
+- **Models:** Classes de dados que representam as entidades do programa.
+- **Views:** Janelas (Windows) e Controles (UserControls) da interface gráfica.
+- **ViewModels:** Classes que implementam a lógica de apresentação (MVVM).
+- **Utils:** Classes auxiliares com métodos utilitários reutilizáveis.
+- **Config:** Definições de connection strings e configurações globais.
+- **Resources:** Ícones, imagens e outros recursos.
+- **Properties:** Informações do AssemblyInfo.
   
 ## 🎯 Objetivo
 O objetivo principal é criar uma ferramenta leve e prática para agilizar consultas em massa a bancos de dados SQL Server, facilitando o meu processo interno de migração de dados.
