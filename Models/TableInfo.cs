@@ -10,6 +10,6 @@ namespace SqlHelper.Models
     {
         public string Name { get; }
         public long RowCount { get; }
-        public
+        //public
     }
 }

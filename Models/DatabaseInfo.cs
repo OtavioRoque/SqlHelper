@@ -10,10 +10,10 @@
             Name = name;
         }
 
-        public bool AddTable(TableInfo table)
-        {
+        //public bool AddTable(TableInfo table)
+        //{
 
-        }
+        //}
 
         private bool TablesExists(string tableName)
         {
