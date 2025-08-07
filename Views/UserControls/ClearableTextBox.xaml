@@ -20,6 +20,7 @@
             TextAlignment="Left"
             Background="Transparent"
             Padding="2"
+            VerticalContentAlignment="Center"
             TextChanged="txtInput_TextChanged"/>
 
         <Button 
