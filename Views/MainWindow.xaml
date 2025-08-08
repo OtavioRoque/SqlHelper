@@ -8,10 +8,6 @@
         mc:Ignorable="d"
         Title="SQL Helper" Height="600" Width="1100">
     <DockPanel>
-
-        <!-- StatusBar do rodapé -->
-        <userControls:ProgressStatusBar DockPanel.Dock="Bottom"/>
-
         <!-- Grid principal, que divide a tela em dois lados -->
         <Grid>
             <Grid.ColumnDefinitions>
@@ -35,7 +31,19 @@
                 </StackPanel>
 
                 <!-- Datagrid das tabelas -->
-                <userControls:GenericDataGrid x:Name="dgTables" Grid.Row="1" Margin="0 10 0 0"/>
+                <DataGrid
+                    x:Name="dgTables"
+                    Grid.Row="1"
+                    Margin="0 10 0 0"
+                    IsReadOnly="True"
+                    AutoGenerateColumns="False">
+
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header=""/>
+                        <DataGridTextColumn Header="Tabela" Width="3*"/>
+                        <DataGridTextColumn Header="Rows" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Grid>
 
             <!-- GridSplitter vertical que divide os dois lados da tela -->
@@ -92,7 +100,7 @@
                         </Grid>
 
                         <!-- Datagrid dados da tabela selecionada -->
-                        <userControls:GenericDataGrid x:Name="dgTableData" Grid.Row="2"/>
+                        <DataGrid x:Name="dgTableData" Grid.Row="2"/>
                     </Grid>
                 </TabItem>
 
