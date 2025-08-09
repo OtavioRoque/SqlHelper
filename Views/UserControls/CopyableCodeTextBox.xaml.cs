@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace SqlHelper.UserControls
+namespace SqlHelper.Views.UserControls
 {
     public partial class CopyableCodeTextBox : UserControl
     {
