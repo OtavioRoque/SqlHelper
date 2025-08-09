@@ -7,170 +7,169 @@
         xmlns:userControls="clr-namespace:SqlHelper.Views.UserControls"
         mc:Ignorable="d"
         Title="SQL Helper" Height="600" Width="1100">
-    <DockPanel>
-        <!-- Grid principal, que divide a tela em dois lados -->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <!-- Lado esquerdo -->
-            <Grid Grid.Column="0" Margin="10 10 0 10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+    <!-- Grid principal, que divide a tela em dois lados -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-                <!-- Cabecalho de definição de dabatase e filtro de colunas -->
-                <StackPanel Grid.Row="0" Orientation="Vertical">
-                    <ComboBox x:Name="cbDatabases" Margin="0 0 0 10" SelectionChanged="cbDatabases_SelectionChanged"/>
+        <!-- Lado esquerdo -->
+        <Grid Grid.Column="0" Margin="10 10 0 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                    <userControls:ClearableTextBox x:Name="txtTableFilter" Placeholder="Filtrar tabelas..."/>
-                </StackPanel>
+            <!-- Cabecalho de definição de dabatase e filtro de colunas -->
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <ComboBox x:Name="cbDatabases" Margin="0 0 0 10" SelectionChanged="cbDatabases_SelectionChanged"/>
 
-                <!-- Datagrid das tabelas -->
-                <DataGrid
-                    x:Name="dgTables"
-                    Grid.Row="1"
-                    Margin="0 10 0 0"
-                    IsReadOnly="True"
-                    AutoGenerateColumns="False">
+                <userControls:ClearableTextBox x:Name="txtTableFilter" Placeholder="Filtrar tabelas..."/>
+            </StackPanel>
 
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header=""/>
-                        <DataGridTextColumn Header="Tabela" Width="3*"/>
-                        <DataGridTextColumn Header="Rows" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
+            <!-- Datagrid das tabelas -->
+            <DataGrid
+                x:Name="dgTables"
+                Grid.Row="1"
+                Margin="0 10 0 0"
+                IsReadOnly="True"
+                AutoGenerateColumns="False">
 
-            <!-- GridSplitter vertical que divide os dois lados da tela -->
-            <GridSplitter 
-                Grid.Column="1"
-                Background="Transparent"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"/>
-
-            <!-- Lado direito -->
-            <TabControl x:Name="tabControlMain" Grid.Column="2" Margin="0 10 10 10">
-
-                <!-- Consultas -->
-                <TabItem x:Name="tabItemSearch" Header="Consultas">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <!-- Filtros de busca da tabela selecionada -->
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                                <userControls:ClearableTextBox 
-                                    x:Name="txtSearch"
-                                    Width="200"
-                                    Margin="0 7 10 10"
-                                    Placeholder="Buscar..."/>
-
-                                <RadioButton 
-                                    x:Name="rbSearchData"
-                                    Content="Dados"
-                                    VerticalAlignment="Center"
-                                    Margin="0 0 10 0"/>
-
-                                <RadioButton 
-                                    x:Name="rbSearchColumns"
-                                    Content="Colunas"
-                                    VerticalAlignment="Center"
-                                    Margin="0 0 10 0"/>
-
-                                <Button
-                                    x:Name="btnSearch"
-                                    Content="Buscar"
-                                    Height="26"
-                                    Padding="2"
-                                    Width="Auto"/>
-                            </StackPanel>
-                        </Grid>
-
-                        <!-- Datagrid dados da tabela selecionada -->
-                        <DataGrid x:Name="dgTableData" Grid.Row="2"/>
-                    </Grid>
-                </TabItem>
-
-                <!-- Auto select -->
-                <TabItem x:Name="tabItemAutoSelect" Header="Auto select">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <!-- Cabeçalho: opções de qual tipo de importação -->
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-
-                            <RadioButton
-                                x:Name="rbClientes"
-                                Grid.Column="0"
-                                Content="Clientes"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                            
-                            <RadioButton
-                                x:Name="rbProdutos"
-                                Grid.Column="1"
-                                Content="Produtos"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                            
-                            <RadioButton
-                                x:Name="rbEntradas"
-                                Grid.Column="2"
-                                Content="Entradas"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                            
-                            <RadioButton
-                                x:Name="rbSaidas"
-                                Grid.Column="3"
-                                Content="Saídas"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                            
-                            <RadioButton
-                                x:Name="rbContasPagar"
-                                Grid.Column="4"
-                                Content="Contas a pagar"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                            
-                            <RadioButton
-                                x:Name="rbContasReceber"
-                                Grid.Column="5"
-                                Content="Contas a receber"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <!-- Txt com o código gerado no auto select -->
-                        <userControls:CopyableCodeTextBox x:Name="txtAutoSelectCode" Grid.Row="1"/>
-                    </Grid>
-                </TabItem>
-            </TabControl>
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Header=""/>
+                    <DataGridTextColumn Header="Tabela" Width="3*"/>
+                    <DataGridTextColumn Header="Rows" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
-    </DockPanel>
+
+        <!-- GridSplitter vertical que divide os dois lados da tela -->
+        <GridSplitter 
+            Grid.Column="1"
+            Background="Transparent"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"/>
+
+        <!-- Lado direito -->
+        <TabControl x:Name="tabControlMain" Grid.Column="2" Margin="0 10 10 10">
+
+            <!-- Consultas -->
+            <TabItem x:Name="tabItemSearch" Header="Consultas">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Filtros de busca da tabela selecionada -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                            <userControls:ClearableTextBox 
+                                x:Name="txtSearch"
+                                Width="200"
+                                Margin="0 7 10 10"
+                                Placeholder="Buscar..."/>
+
+                            <RadioButton 
+                                x:Name="rbSearchData"
+                                Content="Dados"
+                                VerticalAlignment="Center"
+                                Margin="0 0 10 0"/>
+
+                            <RadioButton 
+                                x:Name="rbSearchColumns"
+                                Content="Colunas"
+                                VerticalAlignment="Center"
+                                Margin="0 0 10 0"/>
+
+                            <Button
+                                x:Name="btnSearch"
+                                Content="Buscar"
+                                Height="26"
+                                Padding="2"
+                                Width="Auto"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Datagrid dados da tabela selecionada -->
+                    <DataGrid x:Name="dgTableData" Grid.Row="2"/>
+                </Grid>
+            </TabItem>
+
+            <!-- Auto select -->
+            <TabItem x:Name="tabItemAutoSelect" Header="Auto select">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Cabeçalho: opções de qual tipo de importação -->
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <RadioButton
+                            x:Name="rbClientes"
+                            Grid.Column="0"
+                            Content="Clientes"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                        <RadioButton
+                            x:Name="rbProdutos"
+                            Grid.Column="1"
+                            Content="Produtos"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                        <RadioButton
+                            x:Name="rbContasReceber"
+                            Grid.Column="2"
+                            Content="Contas a receber"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                        <RadioButton
+                            x:Name="rbContasPagar"
+                            Grid.Column="3"
+                            Content="Contas a pagar"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                        <RadioButton
+                            x:Name="rbEntradas"
+                            Grid.Column="4"
+                            Content="Entradas"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+
+                        <RadioButton
+                            x:Name="rbSaidas"
+                            Grid.Column="5"
+                            Content="Saídas"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Txt com o código gerado no auto select -->
+                    <userControls:CopyableCodeTextBox x:Name="txtAutoSelectCode" Grid.Row="1"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
 </Window>
