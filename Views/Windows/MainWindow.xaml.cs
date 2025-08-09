@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 #pragma warning disable CS8600
 
-namespace SqlHelper.Windows
+namespace SqlHelper.Views.Windows
 {
     public partial class MainWindow : Window
     {
