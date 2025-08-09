@@ -113,7 +113,58 @@
                         </Grid.RowDefinitions>
 
                         <!-- Cabeçalho: opções de qual tipo de importação -->
-                        <userControls:ImportOptionsRadioButtons Grid.Row="0"/>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <RadioButton
+                                x:Name="rbClientes"
+                                Grid.Column="0"
+                                Content="Clientes"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            
+                            <RadioButton
+                                x:Name="rbProdutos"
+                                Grid.Column="1"
+                                Content="Produtos"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            
+                            <RadioButton
+                                x:Name="rbEntradas"
+                                Grid.Column="2"
+                                Content="Entradas"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            
+                            <RadioButton
+                                x:Name="rbSaidas"
+                                Grid.Column="3"
+                                Content="Saídas"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            
+                            <RadioButton
+                                x:Name="rbContasPagar"
+                                Grid.Column="4"
+                                Content="Contas a pagar"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            
+                            <RadioButton
+                                x:Name="rbContasReceber"
+                                Grid.Column="5"
+                                Content="Contas a receber"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                        </Grid>
 
                         <!-- Txt com o código gerado no auto select -->
                         <userControls:CopyableCodeTextBox x:Name="txtAutoSelectCode" Grid.Row="1"/>
