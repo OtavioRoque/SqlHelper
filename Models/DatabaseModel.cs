@@ -4,13 +4,12 @@
     {
         public string Name { get; }
         public IReadOnlyList<TableModel> Tables => _tables;
+
         private List<TableModel> _tables = new List<TableModel>();
 
-        public DatabaseModel(string name, List<TableModel>? tables = null)
+        public DatabaseModel(string name)
         {
             Name = name;
-            if (tables != null)
-                _tables.AddRange(tables);
         }
 
         public void AddTable(TableModel table)
