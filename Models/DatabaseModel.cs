@@ -3,21 +3,27 @@
     internal class DatabaseModel
     {
         public string Name { get; }
-        public List<TableModel> Tables { get; } = new List<TableModel>();
+        public IReadOnlyList<TableModel> Tables => _tables;
+        private List<TableModel> _tables = new List<TableModel>();
 
-        public DatabaseModel(string name)
+        public DatabaseModel(string name, List<TableModel>? tables = null)
         {
             Name = name;
+            if (tables != null)
+                _tables.AddRange(tables);
         }
 
-        //public bool AddTable(TableInfo table)
-        //{
-
-        //}
-
-        private bool TablesExists(string tableName)
+        public void AddTable(TableModel table)
         {
-            return Tables.Any(t => t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase));
+            if (TableExists(table.Name))
+                return;
+
+            _tables.Add(table);
+        }
+
+        private bool TableExists(string tableName)
+        {
+            return _tables.Any(t => t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
