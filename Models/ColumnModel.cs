@@ -18,14 +18,16 @@ namespace SqlHelper.Models
         Text, 
         Varchar
     }
-    internal class ColumnInfo
+
+    public class ColumnModel
     {
         public string Name { get; }
         public SqlDataType DataType { get; }
 
-        public ColumnInfo()
+        public ColumnModel(string name, SqlDataType dataType)
         {
-            
+            Name = name;
+            DataType = dataType;
         }
     }
 }

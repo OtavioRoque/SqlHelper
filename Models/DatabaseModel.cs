@@ -1,11 +1,11 @@
 ﻿namespace SqlHelper.Models
 {
-    internal class DatabaseInfo
+    internal class DatabaseModel
     {
         public string Name { get; }
-        public List<TableInfo> Tables { get; } = new List<TableInfo>();
+        public List<TableModel> Tables { get; } = new List<TableModel>();
 
-        public DatabaseInfo(string name)
+        public DatabaseModel(string name)
         {
             Name = name;
         }
