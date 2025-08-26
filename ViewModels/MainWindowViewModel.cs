@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace SqlHelper.ViewModels
 {
-    internal class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
+        public MainWindowViewModel()
+        {
+            OnLoaded();
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnLoaded()
+        {
+            // aqui quero carregar os dados iniciais
+        }
     }
 }
