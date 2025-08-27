@@ -2,13 +2,13 @@
 {
     public class TableModel
     {
+        private List<ColumnModel> _columns = new List<ColumnModel>();
+
         public string Schema { get; }
         public string Name { get; }
         public long RowCount { get; set; }
         public bool IsChecked { get; set; }
         public IReadOnlyList<ColumnModel> Columns => _columns;
-
-        private List<ColumnModel> _columns = new List<ColumnModel>();
 
         public TableModel(string schema, string name)
         {

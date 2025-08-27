@@ -1,11 +1,11 @@
 ﻿namespace SqlHelper.Models
 {
-    internal class DatabaseModel
+    public class DatabaseModel
     {
+        private List<TableModel> _tables = new List<TableModel>();
+
         public string Name { get; }
         public IReadOnlyList<TableModel> Tables => _tables;
-
-        private List<TableModel> _tables = new List<TableModel>();
 
         public DatabaseModel(string name)
         {
