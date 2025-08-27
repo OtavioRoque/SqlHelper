@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SqlHelper"
         xmlns:userControls="clr-namespace:SqlHelper.Views.UserControls"
         mc:Ignorable="d"
-        Title="SQL Helper" Height="600" Width="1100">
+        Title="SQL Helper" Height="600" Width="1100"
+        WindowStartupLocation="CenterScreen">
 
     <!-- Grid principal, que divide a tela em dois lados -->
     <Grid>
@@ -25,7 +26,12 @@
 
             <!-- Cabecalho de definição de dabatase e filtro de colunas -->
             <StackPanel Grid.Row="0" Orientation="Vertical">
-                <ComboBox x:Name="cbDatabases" Margin="0 0 0 10" SelectionChanged="cbDatabases_SelectionChanged"/>
+                <ComboBox
+                    x:Name="cbDatabases"
+                    Margin="0 0 0 10"
+                    ItemsSource="{Binding Databases}"
+                    SelectedItem="{Binding SelectedDatabase, Mode=TwoWay}"
+                    DisplayMemberPath="Name"/>
 
                 <userControls:ClearableTextBox x:Name="txtTableFilter" Placeholder="Filtrar tabelas..."/>
             </StackPanel>
