@@ -2,6 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
+#pragma warning disable CS8618
+
 namespace SqlHelper.Views.UserControls
 {
     public partial class CopyableCodeTextBox : UserControl
@@ -19,8 +21,6 @@ namespace SqlHelper.Views.UserControls
             get { return textBoxContent; }
             set { textBoxContent = value; }
         }
-
-        #region Events
 
         private void btnCopy_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +42,5 @@ namespace SqlHelper.Views.UserControls
             btnCopy.Content = "📋Copiar";
             btnCopy.IsHitTestVisible = true;
         }
-
-        #endregion
     }
 }

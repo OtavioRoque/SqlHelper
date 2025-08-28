@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
+#pragma warning disable CS8618
+
 namespace SqlHelper.Views.UserControls
 {
     public partial class ClearableTextBox : UserControl
@@ -19,8 +21,6 @@ namespace SqlHelper.Views.UserControls
             set { _placeHolder = value; }
         }
 
-        #region Events
-
         private void btnClear_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             txtInput.Clear();
@@ -34,7 +34,5 @@ namespace SqlHelper.Views.UserControls
             else
                 tbPlaceholder.Visibility = Visibility.Hidden;
         }
-
-        #endregion
     }
 }

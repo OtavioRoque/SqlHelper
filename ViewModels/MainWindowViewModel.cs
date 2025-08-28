@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Runtime.CompilerServices;
 
+#pragma warning disable CS8618
+
 namespace SqlHelper.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private DatabaseModel _selectedDatabase = new DatabaseModel(string.Empty);
+        private DatabaseModel _selectedDatabase;
 
         public DatabaseModel SelectedDatabase
         {
