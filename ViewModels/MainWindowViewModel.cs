@@ -8,9 +8,9 @@ namespace SqlHelper.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private DatabaseModel? _selectedDatabase;
+        private DatabaseModel _selectedDatabase = new DatabaseModel(string.Empty);
 
-        public DatabaseModel? SelectedDatabase
+        public DatabaseModel SelectedDatabase
         {
             get => _selectedDatabase;
             set
@@ -19,6 +19,7 @@ namespace SqlHelper.ViewModels
                 {
                     _selectedDatabase = value;
                     OnPropertyChanged();
+                    LoadDatabaseTables();
                 }
             }
         }
@@ -42,6 +43,9 @@ namespace SqlHelper.ViewModels
             string sql = "SELECT name FROM sys.databases";
             var dtDatabases = DB.FillDataTable(sql);
 
+            Databases.Clear();
+            Databases.Add(new DatabaseModel(string.Empty));
+
             foreach (DataRow row in dtDatabases.Rows)
             {
                 string databaseName = row["name"].ToString() ?? string.Empty;
@@ -51,6 +55,16 @@ namespace SqlHelper.ViewModels
 
                 Databases.Add(new DatabaseModel(databaseName));
             }
+
+            SelectedDatabase = Databases.First();
+        }
+
+        private void LoadDatabaseTables()
+        {
+            if (string.IsNullOrWhiteSpace(SelectedDatabase.Name))
+                return;
+
+            // falta dar seguimento aqui
         }
     }
 }
