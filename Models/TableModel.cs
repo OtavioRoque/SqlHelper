@@ -18,10 +18,8 @@
 
         public void AddColumn(ColumnModel column)
         {
-            if (ColumnExists(column.Name))
-                return;
-
-            _columns.Add(column);
+            if (!ColumnExists(column.Name))
+                _columns.Add(column);
         }
 
         private bool ColumnExists(string columnName)
