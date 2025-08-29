@@ -48,9 +48,9 @@ namespace SqlHelper.ViewModels
             Databases.Clear();
             Databases.Add(new DatabaseModel(string.Empty));
 
-            foreach (DataRow row in dtDatabases.Rows)
+            foreach (DataRow dr in dtDatabases.Rows)
             {
-                string databaseName = row["name"].ToString() ?? string.Empty;
+                string databaseName = dr["name"].ToString() ?? string.Empty;
 
                 if (string.IsNullOrWhiteSpace(databaseName))
                     continue;
@@ -66,7 +66,34 @@ namespace SqlHelper.ViewModels
             if (string.IsNullOrWhiteSpace(SelectedDatabase.Name))
                 return;
 
-            // falta dar seguimento aqui
+            string sql = $@"
+                SELECT
+                    s.name AS SchemaName,
+                    t.name AS TableName,
+                    SUM(p.rows) AS [RowCount]
+                FROM
+                    {SelectedDatabase.Name}.sys.tables t
+                    JOIN {SelectedDatabase.Name}.sys.schemas s ON t.schema_id = s.schema_id
+                    JOIN {SelectedDatabase.Name}.sys.partitions p ON t.object_id = p.object_id
+                WHERE
+                    p.index_id IN (0,1)
+                GROUP BY
+                    s.name, t.name
+                HAVING
+                    SUM(p.rows) > 0
+                ORDER BY
+                    s.name, t.name";
+
+            var dtTables = DB.FillDataTable(sql);
+
+            foreach (DataRow dr in dtTables.Rows)
+            {
+                string schema = dr["SchemaName"].ToString() ?? string.Empty;
+                string name = dr["TableName"].ToString() ?? string.Empty;
+                long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
+
+                SelectedDatabase.AddTable(new TableModel(schema, name, rowCount));
+            }
         }
     }
 }

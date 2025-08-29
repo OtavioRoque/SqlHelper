@@ -42,12 +42,13 @@
                 Grid.Row="1"
                 Margin="0 10 0 0"
                 IsReadOnly="True"
-                AutoGenerateColumns="False">
+                AutoGenerateColumns="False"
+                ItemsSource="{Binding SelectedDatabase.Tables}">
 
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header=""/>
-                    <DataGridTextColumn Header="Tabela" Width="3*"/>
-                    <DataGridTextColumn Header="Rows" Width="*"/>
+                    <DataGridCheckBoxColumn Header="" Binding="{Binding IsChecked}"/>
+                    <DataGridTextColumn Header="Tabela" Width="3*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Rows" Width="*" Binding="{Binding RowCount}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
