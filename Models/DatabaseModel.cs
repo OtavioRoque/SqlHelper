@@ -14,15 +14,15 @@
 
         public void AddTable(TableModel table)
         {
-            if (TableExists(table.Name))
-                return;
-
-            _tables.Add(table);
+            if (!TableExists(table.Schema, table.Name))
+                _tables.Add(table);
         }
 
-        private bool TableExists(string tableName)
+        private bool TableExists(string schema, string tableName)
         {
-            return _tables.Any(t => t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase));
+            return _tables.Any(t =>
+                t.Schema.Equals(schema, StringComparison.OrdinalIgnoreCase) &&
+                t.Name.Equals(tableName, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
