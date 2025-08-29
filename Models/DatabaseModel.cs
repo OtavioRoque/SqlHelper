@@ -1,15 +1,18 @@
-﻿namespace SqlHelper.Models
+﻿using System.Collections.ObjectModel;
+
+namespace SqlHelper.Models
 {
     public class DatabaseModel
     {
-        private List<TableModel> _tables = new List<TableModel>();
+        private ObservableCollection<TableModel> _tables = new ObservableCollection<TableModel>();
 
         public string Name { get; }
-        public IReadOnlyList<TableModel> Tables => _tables;
+        public ReadOnlyObservableCollection<TableModel> Tables { get; }
 
         public DatabaseModel(string name)
         {
             Name = name;
+            Tables = new ReadOnlyObservableCollection<TableModel>(_tables);
         }
 
         public void AddTable(TableModel table)
