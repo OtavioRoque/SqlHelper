@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using SqlHelper.Config;
 using Microsoft.Data.SqlClient;
 
 #pragma warning disable CS8601

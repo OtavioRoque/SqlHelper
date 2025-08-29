@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.IO;
 
-namespace SqlHelper.Utils
+namespace SqlHelper.Config
 {
     public static class ConfigLoader
     {
