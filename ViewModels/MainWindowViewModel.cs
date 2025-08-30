@@ -27,6 +27,7 @@ namespace SqlHelper.ViewModels
         }
 
         public ObservableCollection<DatabaseModel> Databases { get; } = new ObservableCollection<DatabaseModel>();
+        public ObservableCollection<TableModel> Tables { get; } = new ObservableCollection<TableModel>();
 
         public MainWindowViewModel()
         {
@@ -92,7 +93,7 @@ namespace SqlHelper.ViewModels
                 string name = dr["TableName"].ToString() ?? string.Empty;
                 long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
 
-                SelectedDatabase.AddTable(new TableModel(schema, name, rowCount));
+                Tables.Add(new TableModel(schema, name, rowCount));
             }
         }
     }
