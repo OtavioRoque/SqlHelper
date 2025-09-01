@@ -1,4 +1,5 @@
-﻿using SqlHelper.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using SqlHelper.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace SqlHelper.ViewModels
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : ObservableObject
     {
         private DatabaseModel _selectedDatabase;
 
@@ -52,13 +53,6 @@ namespace SqlHelper.ViewModels
             LoadDatabases();
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private void LoadDatabases()
         {
             string sql = "SELECT name FROM sys.databases";
@@ -82,6 +76,8 @@ namespace SqlHelper.ViewModels
 
         private void LoadDatabaseTables()
         {
+            if (SelectedDatabase is null)
+                return;
             if (string.IsNullOrWhiteSpace(SelectedDatabase.Name))
                 return;
 
@@ -119,6 +115,8 @@ namespace SqlHelper.ViewModels
 
         private void LoadTableColumns()
         {
+            if (SelectedTable is null)
+                return;
             if (string.IsNullOrWhiteSpace(SelectedTable.Schema) || string.IsNullOrWhiteSpace(SelectedTable.Name))
                 return;
 
