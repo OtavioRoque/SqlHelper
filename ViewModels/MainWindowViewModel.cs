@@ -26,8 +26,26 @@ namespace SqlHelper.ViewModels
             }
         }
 
+        private TableModel _selectedTable;
+
+        public TableModel SelectedTable
+        {
+            get => _selectedTable;
+            set
+            {
+                if (_selectedTable != value)
+                {
+                    _selectedTable = value;
+                    OnPropertyChanged();
+                    LoadTableColumns();
+                }
+            }
+        }
+
+
         public ObservableCollection<DatabaseModel> Databases { get; } = new ObservableCollection<DatabaseModel>();
         public ObservableCollection<TableModel> Tables { get; } = new ObservableCollection<TableModel>();
+        public ObservableCollection<ColumnModel> Columns { get; } = new ObservableCollection<ColumnModel>();
 
         public MainWindowViewModel()
         {
@@ -87,6 +105,8 @@ namespace SqlHelper.ViewModels
 
             var dtTables = DB.FillDataTable(sql);
 
+            Tables.Clear();
+
             foreach (DataRow dr in dtTables.Rows)
             {
                 string schema = dr["SchemaName"].ToString() ?? string.Empty;
@@ -94,6 +114,34 @@ namespace SqlHelper.ViewModels
                 long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
 
                 Tables.Add(new TableModel(schema, name, rowCount));
+            }
+        }
+
+        private void LoadTableColumns()
+        {
+            if (string.IsNullOrWhiteSpace(SelectedTable.Schema) || string.IsNullOrWhiteSpace(SelectedTable.Name))
+                return;
+
+            string sql = @$"
+                SELECT 
+	                COLUMN_NAME,
+	                DATA_TYPE
+                FROM
+	                {SelectedDatabase.Name}.INFORMATION_SCHEMA.COLUMNS
+                WHERE
+	                TABLE_SCHEMA = '{SelectedTable.Schema}' AND
+                    TABLE_NAME = '{SelectedTable.Name}'";
+
+            var dtColumns = DB.FillDataTable(sql);
+
+            Columns.Clear();
+
+            foreach (DataRow dr in dtColumns.Rows)
+            {
+                string name = dr["COLUMN_NAME"].ToString() ?? string.Empty;
+                SqlDbType dataType = PH.ToSqlDbType(dr["DATA_TYPE"].ToString() ?? string.Empty);
+
+                Columns.Add(new ColumnModel(name, dataType));
             }
         }
     }
