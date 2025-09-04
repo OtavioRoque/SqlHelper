@@ -39,6 +39,7 @@ namespace SqlHelper.ViewModels
                 if (_selectedTable != value)
                 {
                     _selectedTable = value;
+                    SelectedTable.IsChecked = !SelectedTable.IsChecked;
                     OnPropertyChanged();
                     LoadTableColumns();
                 }
