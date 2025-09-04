@@ -6,6 +6,8 @@ using System.Data;
 using System.Runtime.CompilerServices;
 
 #pragma warning disable CS8618
+#pragma warning disable CS8600
+#pragma warning disable CS8604
 
 namespace SqlHelper.ViewModels
 {
@@ -63,7 +65,7 @@ namespace SqlHelper.ViewModels
 
             foreach (DataRow dr in dtDatabases.Rows)
             {
-                string databaseName = dr["name"].ToString() ?? string.Empty;
+                string databaseName = dr["name"].ToString();
 
                 if (string.IsNullOrWhiteSpace(databaseName))
                     continue;
@@ -105,9 +107,9 @@ namespace SqlHelper.ViewModels
 
             foreach (DataRow dr in dtTables.Rows)
             {
-                string schema = dr["SchemaName"].ToString() ?? string.Empty;
-                string name = dr["TableName"].ToString() ?? string.Empty;
-                long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
+                string schema = dr["SchemaName"].ToString();
+                string name = dr["TableName"].ToString();
+                long rowCount = PH.ToLong(dr["RowCount"].ToString());
 
                 Tables.Add(new TableModel(schema, name, rowCount));
             }
@@ -136,8 +138,8 @@ namespace SqlHelper.ViewModels
 
             foreach (DataRow dr in dtColumns.Rows)
             {
-                string name = dr["COLUMN_NAME"].ToString() ?? string.Empty;
-                SqlDbType dataType = PH.ToSqlDbType(dr["DATA_TYPE"].ToString() ?? string.Empty);
+                string name = dr["COLUMN_NAME"].ToString();
+                SqlDbType dataType = PH.ToSqlDbType(dr["DATA_TYPE"].ToString());
 
                 Columns.Add(new ColumnModel(name, dataType));
             }
