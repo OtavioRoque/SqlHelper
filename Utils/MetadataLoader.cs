@@ -1,0 +1,100 @@
+﻿using SqlHelper.Models;
+using System.Collections.ObjectModel;
+using System.Data;
+
+namespace SqlHelper.Utils
+{
+    public static class MetadataLoader
+    {
+        /// <summary>
+        /// Carrega a lista de bancos de dados existentes no servidor SQL.
+        /// </summary>
+        public static void LoadDatabases(ObservableCollection<DatabaseModel> databases)
+        {
+            string sql = "SELECT name FROM sys.databases";
+            var dtDatabases = DB.FillDataTable(sql);
+
+            databases.Clear();
+            databases.Add(new DatabaseModel(string.Empty));
+
+            foreach (DataRow dr in dtDatabases.Rows)
+            {
+                string databaseName = dr["name"].ToString() ?? string.Empty;
+
+                if (!string.IsNullOrWhiteSpace(databaseName))
+                    databases.Add(new DatabaseModel(databaseName));
+            }
+        }
+
+        /// <summary>
+        /// Carrega as tabelas de um banco de dados específico, incluindo o esquema e contagem de linhas.
+        /// </summary>
+        public static void LoadTables(ObservableCollection<TableModel> tables, string databaseName)
+        {
+            if (string.IsNullOrWhiteSpace(databaseName))
+                return;
+
+            string sql = $@"
+                SELECT
+                    s.name AS SchemaName,
+                    t.name AS TableName,
+                    SUM(p.rows) AS [RowCount]
+                FROM
+                    {databaseName}.sys.tables t
+                    JOIN {databaseName}.sys.schemas s ON t.schema_id = s.schema_id
+                    JOIN {databaseName}.sys.partitions p ON t.object_id = p.object_id
+                WHERE
+                    p.index_id IN (0,1)
+                GROUP BY
+                    s.name, t.name
+                HAVING
+                    SUM(p.rows) > 0
+                ORDER BY
+                    s.name, t.name";
+
+            var dtTables = DB.FillDataTable(sql);
+
+            tables.Clear();
+
+            foreach (DataRow dr in dtTables.Rows)
+            {
+                string schema = dr["SchemaName"].ToString() ?? string.Empty;
+                string name = dr["TableName"].ToString() ?? string.Empty;
+                long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
+
+                tables.Add(new TableModel(schema, name, rowCount));
+            }
+        }
+
+        /// <summary>
+        /// Carrega as colunas de uma tabela específica de um banco de dados.
+        /// </summary>
+        public static void LoadColumns(ObservableCollection<ColumnModel> columns, string databaseName, string schema, string tableName)
+        {
+            if (string.IsNullOrWhiteSpace(schema) || string.IsNullOrWhiteSpace(databaseName) || string.IsNullOrWhiteSpace(tableName))
+                return;
+
+            string sql = @$"
+                SELECT 
+	                COLUMN_NAME,
+	                DATA_TYPE
+                FROM
+	                {databaseName}.INFORMATION_SCHEMA.COLUMNS
+                WHERE
+	                TABLE_SCHEMA = '{schema}' AND
+                    TABLE_NAME = '{tableName}'";
+
+            var dtColumns = DB.FillDataTable(sql);
+
+            columns.Clear();
+
+            foreach (DataRow dr in dtColumns.Rows)
+            {
+                string name = dr["COLUMN_NAME"].ToString() ?? string.Empty;
+                SqlDbType dataType = PH.ToSqlDbType(dr["DATA_TYPE"].ToString() ?? string.Empty);
+
+                columns.Add(new ColumnModel(name, dataType));
+            }
+        }
+    }
+}
