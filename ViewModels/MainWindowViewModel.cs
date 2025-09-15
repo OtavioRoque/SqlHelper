@@ -42,7 +42,7 @@ namespace SqlHelper.ViewModels
                     _selectedTable = value;
                     SelectedTable.IsChecked = !SelectedTable.IsChecked;
                     OnPropertyChanged();
-                    LoadTableColumns();
+                    MetadataLoader.LoadColumns(Columns, SelectedDatabase, SelectedTable);
                 }
             }
         }
@@ -55,36 +55,6 @@ namespace SqlHelper.ViewModels
         public MainWindowViewModel()
         {
             MetadataLoader.LoadDatabases(Databases);
-        }
-
-        private void LoadTableColumns()
-        {
-            if (SelectedTable is null)
-                return;
-            if (string.IsNullOrWhiteSpace(SelectedTable.Schema) || string.IsNullOrWhiteSpace(SelectedTable.Name))
-                return;
-
-            string sql = @$"
-                SELECT 
-	                COLUMN_NAME,
-	                DATA_TYPE
-                FROM
-	                {SelectedDatabase.Name}.INFORMATION_SCHEMA.COLUMNS
-                WHERE
-	                TABLE_SCHEMA = '{SelectedTable.Schema}' AND
-                    TABLE_NAME = '{SelectedTable.Name}'";
-
-            var dtColumns = DB.FillDataTable(sql);
-
-            Columns.Clear();
-
-            foreach (DataRow dr in dtColumns.Rows)
-            {
-                string name = dr["COLUMN_NAME"].ToString();
-                SqlDbType dataType = PH.ToSqlDbType(dr["DATA_TYPE"].ToString());
-
-                Columns.Add(new ColumnModel(name, dataType));
-            }
         }
     }
 }
