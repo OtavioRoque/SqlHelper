@@ -2,9 +2,6 @@
 using SqlHelper.Models;
 using SqlHelper.Utils;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Runtime.CompilerServices;
 
 #pragma warning disable CS8618
 #pragma warning disable CS8600
