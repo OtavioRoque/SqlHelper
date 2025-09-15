@@ -29,9 +29,9 @@ namespace SqlHelper.Utils
         /// <summary>
         /// Carrega as tabelas de um banco de dados específico, incluindo o esquema e contagem de linhas.
         /// </summary>
-        public static void LoadTables(ObservableCollection<TableModel> tables, string databaseName)
+        public static void LoadTables(ObservableCollection<TableModel> tables, DatabaseModel database)
         {
-            if (string.IsNullOrWhiteSpace(databaseName))
+            if (database == null || string.IsNullOrWhiteSpace(database.Name))
                 return;
 
             string sql = $@"
@@ -40,9 +40,9 @@ namespace SqlHelper.Utils
                     t.name AS TableName,
                     SUM(p.rows) AS [RowCount]
                 FROM
-                    {databaseName}.sys.tables t
-                    JOIN {databaseName}.sys.schemas s ON t.schema_id = s.schema_id
-                    JOIN {databaseName}.sys.partitions p ON t.object_id = p.object_id
+                    {database.Name}.sys.tables t
+                    JOIN {database.Name}.sys.schemas s ON t.schema_id = s.schema_id
+                    JOIN {database.Name}.sys.partitions p ON t.object_id = p.object_id
                 WHERE
                     p.index_id IN (0,1)
                 GROUP BY
