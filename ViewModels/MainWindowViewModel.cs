@@ -3,6 +3,8 @@ using SqlHelper.Models;
 using SqlHelper.Utils;
 using System.Collections.ObjectModel;
 
+#pragma warning disable CS8618
+
 namespace SqlHelper.ViewModels
 {
     public class MainWindowViewModel : ObservableObject
