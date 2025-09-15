@@ -69,9 +69,11 @@ namespace SqlHelper.Utils
         /// <summary>
         /// Carrega as colunas de uma tabela específica de um banco de dados.
         /// </summary>
-        public static void LoadColumns(ObservableCollection<ColumnModel> columns, string databaseName, string schema, string tableName)
+        public static void LoadColumns(ObservableCollection<ColumnModel> columns, DatabaseModel database, TableModel table)
         {
-            if (string.IsNullOrWhiteSpace(schema) || string.IsNullOrWhiteSpace(databaseName) || string.IsNullOrWhiteSpace(tableName))
+            if (database == null || table == null)
+                return;
+            if (string.IsNullOrWhiteSpace(database.Name) || string.IsNullOrWhiteSpace(table.Schema) || string.IsNullOrWhiteSpace(table.Name))
                 return;
 
             string sql = @$"
@@ -79,10 +81,10 @@ namespace SqlHelper.Utils
 	                COLUMN_NAME,
 	                DATA_TYPE
                 FROM
-	                {databaseName}.INFORMATION_SCHEMA.COLUMNS
+	                {database.Name}.INFORMATION_SCHEMA.COLUMNS
                 WHERE
-	                TABLE_SCHEMA = '{schema}' AND
-                    TABLE_NAME = '{tableName}'";
+	                TABLE_SCHEMA = '{table.Schema}' AND
+                    TABLE_NAME = '{table.Name}'";
 
             var dtColumns = DB.FillDataTable(sql);
 
