@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using SqlHelper.Models;
+using SqlHelper.Utils;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -53,28 +54,7 @@ namespace SqlHelper.ViewModels
 
         public MainWindowViewModel()
         {
-            LoadDatabases();
-        }
-
-        private void LoadDatabases()
-        {
-            string sql = "SELECT name FROM sys.databases";
-            var dtDatabases = DB.FillDataTable(sql);
-
-            Databases.Clear();
-            Databases.Add(new DatabaseModel(string.Empty));
-
-            foreach (DataRow dr in dtDatabases.Rows)
-            {
-                string databaseName = dr["name"].ToString();
-
-                if (string.IsNullOrWhiteSpace(databaseName))
-                    continue;
-
-                Databases.Add(new DatabaseModel(databaseName));
-            }
-
-            SelectedDatabase = Databases.First();
+            MetadataLoader.LoadDatabases(Databases);
         }
 
         private void LoadDatabaseTables()
