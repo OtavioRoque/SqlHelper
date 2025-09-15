@@ -25,7 +25,7 @@ namespace SqlHelper.ViewModels
                 {
                     _selectedDatabase = value;
                     OnPropertyChanged();
-                    LoadDatabaseTables();
+                    MetadataLoader.LoadTables(Tables, SelectedDatabase);
                 }
             }
         }
@@ -55,45 +55,6 @@ namespace SqlHelper.ViewModels
         public MainWindowViewModel()
         {
             MetadataLoader.LoadDatabases(Databases);
-        }
-
-        private void LoadDatabaseTables()
-        {
-            if (SelectedDatabase is null)
-                return;
-            if (string.IsNullOrWhiteSpace(SelectedDatabase.Name))
-                return;
-
-            string sql = $@"
-                SELECT
-                    s.name AS SchemaName,
-                    t.name AS TableName,
-                    SUM(p.rows) AS [RowCount]
-                FROM
-                    {SelectedDatabase.Name}.sys.tables t
-                    JOIN {SelectedDatabase.Name}.sys.schemas s ON t.schema_id = s.schema_id
-                    JOIN {SelectedDatabase.Name}.sys.partitions p ON t.object_id = p.object_id
-                WHERE
-                    p.index_id IN (0,1)
-                GROUP BY
-                    s.name, t.name
-                HAVING
-                    SUM(p.rows) > 0
-                ORDER BY
-                    s.name, t.name";
-
-            var dtTables = DB.FillDataTable(sql);
-
-            Tables.Clear();
-
-            foreach (DataRow dr in dtTables.Rows)
-            {
-                string schema = dr["SchemaName"].ToString();
-                string name = dr["TableName"].ToString();
-                long rowCount = PH.ToLong(dr["RowCount"].ToString());
-
-                Tables.Add(new TableModel(schema, name, rowCount));
-            }
         }
 
         private void LoadTableColumns()
