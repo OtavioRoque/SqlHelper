@@ -12,23 +12,8 @@ namespace SqlHelper.ViewModels
         [ObservableProperty]
         private DatabaseModel _selectedDatabase;
 
-        partial void OnSelectedDatabaseChanged(DatabaseModel value)
-        {
-            if (value != null)
-                MetadataLoader.LoadTables(Tables, value);
-        }
-
         [ObservableProperty]
         private TableModel _selectedTable;
-
-        partial void OnSelectedTableChanged(TableModel value)
-        {
-            if (value != null)
-            {
-                value.IsChecked = !value.IsChecked;
-                MetadataLoader.LoadColumns(Columns, SelectedDatabase, value);
-            }
-        }
 
         public ObservableCollection<DatabaseModel> Databases { get; } = new ObservableCollection<DatabaseModel>();
         public ObservableCollection<TableModel> Tables { get; } = new ObservableCollection<TableModel>();
@@ -37,6 +22,21 @@ namespace SqlHelper.ViewModels
         public MainWindowViewModel()
         {
             MetadataLoader.LoadDatabases(Databases);
+        }
+
+        partial void OnSelectedDatabaseChanged(DatabaseModel value)
+        {
+            if (value != null)
+                MetadataLoader.LoadTables(Tables, value);
+        }
+
+        partial void OnSelectedTableChanged(TableModel value)
+        {
+            if (value != null)
+            {
+                value.IsChecked = !value.IsChecked;
+                MetadataLoader.LoadColumns(Columns, SelectedDatabase, value);
+            }
         }
     }
 }
