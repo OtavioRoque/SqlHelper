@@ -18,23 +18,17 @@ namespace SqlHelper.ViewModels
                 MetadataLoader.LoadTables(Tables, value);
         }
 
+        [ObservableProperty]
         private TableModel _selectedTable;
 
-        public TableModel SelectedTable
+        partial void OnSelectedTableChanged(TableModel value)
         {
-            get => _selectedTable;
-            set
+            if (value != null)
             {
-                if (_selectedTable != value)
-                {
-                    _selectedTable = value;
-                    SelectedTable.IsChecked = !SelectedTable.IsChecked;
-                    OnPropertyChanged();
-                    MetadataLoader.LoadColumns(Columns, SelectedDatabase, SelectedTable);
-                }
+                value.IsChecked = !value.IsChecked;
+                MetadataLoader.LoadColumns(Columns, SelectedDatabase, value);
             }
         }
-
 
         public ObservableCollection<DatabaseModel> Databases { get; } = new ObservableCollection<DatabaseModel>();
         public ObservableCollection<TableModel> Tables { get; } = new ObservableCollection<TableModel>();
