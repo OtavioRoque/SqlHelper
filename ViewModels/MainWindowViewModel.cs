@@ -7,22 +7,15 @@ using System.Collections.ObjectModel;
 
 namespace SqlHelper.ViewModels
 {
-    public class MainWindowViewModel : ObservableObject
+    public partial class MainWindowViewModel : ObservableObject
     {
+        [ObservableProperty]
         private DatabaseModel _selectedDatabase;
 
-        public DatabaseModel SelectedDatabase
+        partial void OnSelectedDatabaseChanged(DatabaseModel value)
         {
-            get => _selectedDatabase;
-            set
-            {
-                if (_selectedDatabase != value)
-                {
-                    _selectedDatabase = value;
-                    OnPropertyChanged();
-                    MetadataLoader.LoadTables(Tables, SelectedDatabase);
-                }
-            }
+            if (value != null)
+                MetadataLoader.LoadTables(Tables, value);
         }
 
         private TableModel _selectedTable;
