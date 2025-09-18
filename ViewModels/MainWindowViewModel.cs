@@ -15,9 +15,9 @@ namespace SqlHelper.ViewModels
         [ObservableProperty]
         private TableModel _selectedTable;
 
-        public ObservableCollection<DatabaseModel> Databases { get; } = new ObservableCollection<DatabaseModel>();
-        public ObservableCollection<TableModel> Tables { get; } = new ObservableCollection<TableModel>();
-        public ObservableCollection<ColumnModel> Columns { get; } = new ObservableCollection<ColumnModel>();
+        public ObservableCollection<DatabaseModel> Databases { get; } = new();
+        public ObservableCollection<TableModel> Tables { get; } = new();
+        public ObservableCollection<ColumnModel> Columns { get; } = new();
 
         public MainWindowViewModel()
         {
