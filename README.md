@@ -3,7 +3,6 @@
 ![Platform](https://img.shields.io/badge/plataforma-Windows-blue)
 
 **SQL Helper** é uma ferramenta interna desenvolvida por mim na empresa **Transis Software**.
-Este projeto faz parte do meu portfólio pessoal.
 
 > ⚠️ Pull requests não serão aceitas no momento.
 
