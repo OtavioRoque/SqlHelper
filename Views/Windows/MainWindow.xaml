@@ -45,6 +45,7 @@
                 ItemsSource="{Binding Tables}"
                 SelectedItem="{Binding SelectedTable}"
                 HeadersVisibility="Column"
+                CanUserResizeRows="False"
                 SelectionMode="Single">
 
                 <DataGrid.Columns>
