@@ -8,7 +8,6 @@ namespace SqlHelper.Models
         public string Name { get; }
         public long RowCount { get; }
 
-
         public TableModel(string schema, string name, long rowCount = 0)
         {
             Schema = schema;
