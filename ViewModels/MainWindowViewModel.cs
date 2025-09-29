@@ -33,10 +33,7 @@ namespace SqlHelper.ViewModels
         partial void OnSelectedTableChanged(TableModel value)
         {
             if (value != null)
-            {
-                value.IsChecked = !value.IsChecked;
                 MetadataLoader.LoadColumns(Columns, SelectedDatabase, value);
-            }
         }
     }
 }

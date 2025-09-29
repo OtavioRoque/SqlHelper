@@ -4,14 +4,6 @@ namespace SqlHelper.Models
 {
     public class TableModel : ObservableObject
     {
-        private bool _isChecked;
-
-        public bool IsChecked
-        {
-            get => _isChecked;
-            set => SetProperty(ref _isChecked, value);
-        }
-
         public string Schema { get; }
         public string Name { get; }
         public long RowCount { get; }
