@@ -49,8 +49,17 @@
                 SelectionMode="Single">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Tabela" Width="3*" Binding="{Binding Name}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Rows" Width="*" Binding="{Binding RowCount}" IsReadOnly="True"/>
+                    <DataGridTextColumn
+                        Header="Tabela"
+                        Width="3*"
+                        Binding="{Binding Name}"
+                        IsReadOnly="True"/>
+                    
+                    <DataGridTextColumn
+                        Header="Rows"
+                        Width="*"
+                        Binding="{Binding RowCount}"
+                        IsReadOnly="True"/>
                 </DataGrid.Columns>
 
                 <DataGrid.RowStyle>
