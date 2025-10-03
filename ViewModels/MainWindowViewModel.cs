@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SqlHelper.Models;
 using SqlHelper.Utils;
 using System.Collections.ObjectModel;
@@ -35,5 +36,21 @@ namespace SqlHelper.ViewModels
             if (value != null)
                 MetadataLoader.LoadColumns(Columns, SelectedDatabase, value);
         }
+
+        #region Commands
+
+        [RelayCommand]
+        private void ShowData()
+        {
+
+        }
+
+        [RelayCommand]
+        private void GenerateSelect()
+        {
+
+        }
+
+        #endregion
     }
 }
