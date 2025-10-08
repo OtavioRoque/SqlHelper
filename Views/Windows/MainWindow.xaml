@@ -59,6 +59,27 @@
                         Binding="{Binding RowCount}"
                         IsReadOnly="True"/>
                 </DataGrid.Columns>
+
+                <!-- ContextMenu -->
+                <DataGrid.Resources>
+                    <ContextMenu x:Key="RowMenu">
+                        <MenuItem
+                            Header="Mostrar dados"
+                            Command="{Binding DataContext.ShowDataCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                            CommandParameter="{Binding}"/>
+
+                        <MenuItem
+                            Header="Gerar SELECT"
+                            Command="{Binding DataContext.GenerateSelectCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                            CommandParameter="{Binding}"/>
+                    </ContextMenu>
+                </DataGrid.Resources>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="ContextMenu" Value="{StaticResource RowMenu}"/>
+                    </Style>
+                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
 
