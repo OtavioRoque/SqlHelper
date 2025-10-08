@@ -12,7 +12,7 @@ namespace SqlHelper.Utils
         public static void LoadDatabases(ObservableCollection<DatabaseModel> databases)
         {
             string sql = "SELECT name FROM sys.databases";
-            var dtDatabases = DB.FillDataTable(sql);
+            var dtDatabases = SQL.FillDataTable(sql);
 
             databases.Clear();
             databases.Add(new DatabaseModel(string.Empty));
@@ -52,7 +52,7 @@ namespace SqlHelper.Utils
                 ORDER BY
                     s.name, t.name";
 
-            var dtTables = DB.FillDataTable(sql);
+            var dtTables = SQL.FillDataTable(sql);
 
             tables.Clear();
 
@@ -86,7 +86,7 @@ namespace SqlHelper.Utils
 	                TABLE_SCHEMA = '{table.Schema}' AND
                     TABLE_NAME = '{table.Name}'";
 
-            var dtColumns = DB.FillDataTable(sql);
+            var dtColumns = SQL.FillDataTable(sql);
 
             columns.Clear();
 
