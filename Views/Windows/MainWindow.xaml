@@ -133,7 +133,13 @@
                     </Grid>
 
                     <!-- Datagrid dados da tabela selecionada -->
-                    <DataGrid Grid.Row="2"/>
+                    <DataGrid
+                        Grid.Row="2"
+                        AutoGenerateColumns="True"
+                        ItemsSource="{Binding TableData}"
+                        HeadersVisibility="Column"
+                        CanUserResizeRows="False"
+                        IsReadOnly="True"/>
                 </Grid>
             </TabItem>
 
