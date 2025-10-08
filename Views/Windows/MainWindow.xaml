@@ -52,33 +52,13 @@
                         Width="3*"
                         Binding="{Binding Name}"
                         IsReadOnly="True"/>
-                    
+
                     <DataGridTextColumn
                         Header="Rows"
                         Width="*"
                         Binding="{Binding RowCount}"
                         IsReadOnly="True"/>
                 </DataGrid.Columns>
-
-                <DataGrid.RowStyle>
-                    <Style TargetType="DataGridRow">
-                        <Setter Property="ContextMenu">
-                            <Setter.Value>
-                                <ContextMenu>
-                                    <MenuItem
-                                        Header="Mostrar dados"
-                                        CommandParameter="{Binding}"
-                                        Command="{Binding DataContext.ShowDataCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
-                                    
-                                    <MenuItem
-                                        Header="Gerar SELECT"
-                                        CommandParameter="{Binding}"
-                                        Command="{Binding DataContext.GenerateSelectCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
-                                </ContextMenu>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </DataGrid.RowStyle>
             </DataGrid>
         </Grid>
 
