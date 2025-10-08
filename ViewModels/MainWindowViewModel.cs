@@ -40,13 +40,13 @@ namespace SqlHelper.ViewModels
         #region Commands
 
         [RelayCommand]
-        private void ShowData()
+        private void ShowData(TableModel table)
         {
 
         }
 
         [RelayCommand]
-        private void GenerateSelect()
+        private void GenerateSelect(TableModel table)
         {
 
         }
