@@ -44,20 +44,19 @@
                 SelectedItem="{Binding SelectedTable}"
                 HeadersVisibility="Column"
                 CanUserResizeRows="False"
-                SelectionMode="Single">
+                SelectionMode="Single"
+                IsReadOnly="True">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Header="Tabela"
                         Width="3*"
-                        Binding="{Binding Name}"
-                        IsReadOnly="True"/>
+                        Binding="{Binding Name}"/>
 
                     <DataGridTextColumn
                         Header="Rows"
                         Width="*"
-                        Binding="{Binding RowCount}"
-                        IsReadOnly="True"/>
+                        Binding="{Binding RowCount}"/>
                 </DataGrid.Columns>
 
                 <!-- ContextMenu -->
