@@ -21,7 +21,7 @@ namespace SqlHelper.ViewModels
         private DataTable _tableData;
 
         [ObservableProperty]
-        private int _currentTabIndex;
+        private int _selectedTabIndex;
 
         public ObservableCollection<DatabaseModel> Databases { get; } = new();
         public ObservableCollection<TableModel> Tables { get; } = new();
@@ -56,7 +56,7 @@ namespace SqlHelper.ViewModels
         [RelayCommand]
         private void GenerateSelect(TableModel table)
         {
-            CurrentTabIndex = 1;
+            SelectedTabIndex = 1;
         }
 
         #endregion

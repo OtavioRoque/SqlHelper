@@ -93,7 +93,7 @@
         <TabControl
             Grid.Column="2"
             Margin="0 10 10 10"
-            SelectedIndex="{Binding CurrentTabIndex, Mode=TwoWay}">
+            SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}">
 
             <!-- Consultas -->
             <TabItem Header="Consultas">
