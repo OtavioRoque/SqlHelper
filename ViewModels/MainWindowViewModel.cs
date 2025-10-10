@@ -23,6 +23,9 @@ namespace SqlHelper.ViewModels
         [ObservableProperty]
         private int _selectedTabIndex;
 
+        [ObservableProperty]
+        private string _copyableTextBoxContent;
+
         public ObservableCollection<DatabaseModel> Databases { get; } = new();
         public ObservableCollection<TableModel> Tables { get; } = new();
         public ObservableCollection<ColumnModel> Columns { get; } = new();
@@ -57,6 +60,7 @@ namespace SqlHelper.ViewModels
         private void GenerateSelect(TableModel table)
         {
             SelectedTabIndex = 1;
+            CopyableTextBoxContent = "teste";
         }
 
         #endregion
