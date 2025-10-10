@@ -11,22 +11,25 @@ namespace SqlHelper.Views.UserControls
         public CopyableCodeTextBox()
         {
             InitializeComponent();
-            DataContext = this;
         }
 
-        private string textBoxContent;
+        public static readonly DependencyProperty TextBoxContentProperty =
+            DependencyProperty.Register(
+                nameof(TextBoxContent),
+                typeof(string),
+                typeof(CopyableCodeTextBox),
+                new PropertyMetadata(string.Empty));
 
         public string TextBoxContent
         {
-            get { return textBoxContent; }
-            set { textBoxContent = value; }
+            get => (string)GetValue(TextBoxContentProperty);
+            set => SetValue(TextBoxContentProperty, value);
         }
 
         private void btnCopy_Click(object sender, RoutedEventArgs e)
         {
             txtCode.SelectAll();
             txtCode.Copy();
-
             btnCopy.Content = "✅Copiado!";
             btnCopy.IsHitTestVisible = false;
         }

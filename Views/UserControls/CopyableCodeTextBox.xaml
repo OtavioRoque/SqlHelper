@@ -9,7 +9,10 @@
     <Grid>
         <TextBox 
             x:Name="txtCode"
-            Text="{Binding TextBoxContent}"
+            Text="{Binding TextBoxContent, 
+                RelativeSource={RelativeSource AncestorType=UserControl}, 
+                Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}"
             Padding="2"
             FontFamily="Consolas"
             FontSize="14"
