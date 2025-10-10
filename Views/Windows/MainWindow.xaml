@@ -202,7 +202,7 @@
                     </Grid>
 
                     <!-- Txt com o código gerado no auto select -->
-                    <userControls:CopyableCodeTextBox Grid.Row="1"/>
+                    <userControls:CopyableCodeTextBox Grid.Row="1" TextBoxContent="{Binding CopyableTextBoxContent, Mode=TwoWay}"/>
                 </Grid>
             </TabItem>
         </TabControl>
