@@ -62,7 +62,7 @@ namespace SqlHelper.Utils
                 string name = dr["TableName"].ToString() ?? string.Empty;
                 long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
 
-                tables.Add(new TableModel(database, schema, name, rowCount));
+                tables.Add(new TableModel(schema, name, rowCount));
             }
         }
 
