@@ -28,7 +28,6 @@ namespace SqlHelper.ViewModels
 
         public ObservableCollection<DatabaseModel> Databases { get; } = new();
         public ObservableCollection<TableModel> Tables { get; } = new();
-        public ObservableCollection<ColumnModel> Columns { get; } = new();
 
         public MainWindowViewModel()
         {
@@ -39,12 +38,6 @@ namespace SqlHelper.ViewModels
         {
             if (value != null)
                 MetadataLoader.LoadTables(Tables, value);
-        }
-
-        partial void OnSelectedTableChanged(TableModel value)
-        {
-            if (value != null)
-                MetadataLoader.LoadColumns(Columns, SelectedDatabase, value);
         }
 
         #region Commands
