@@ -36,8 +36,7 @@ namespace SqlHelper.ViewModels
 
         partial void OnSelectedDatabaseChanged(DatabaseModel value)
         {
-            if (value != null)
-                MetadataLoader.LoadTables(Tables, value);
+            MetadataLoader.LoadTables(Tables, value);
         }
 
         #region Commands
