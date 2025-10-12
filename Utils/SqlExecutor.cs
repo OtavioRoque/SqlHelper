@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using SqlHelper.Config;
 using Microsoft.Data.SqlClient;
+using System.Windows;
 
 #pragma warning disable CS8601
 #pragma warning disable CS8603
@@ -41,7 +42,8 @@ namespace SqlHelper.Utils
             }
             catch (Exception ex)
             {
-                throw ThrowSqlCommandException(sql, ex);
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
 
@@ -53,14 +55,21 @@ namespace SqlHelper.Utils
         /// </remarks>
         public static void ExecuteReader(string sql, Action<SqlDataReader> processador)
         {
-            using var conn = new SqlConnection(_connectionString);
-            using var cmd = new SqlCommand(sql, conn);
-
-            conn.Open();
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                processador(reader);
+                using var conn = new SqlConnection(_connectionString);
+                using var cmd = new SqlCommand(sql, conn);
+
+                conn.Open();
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    processador(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -82,7 +91,8 @@ namespace SqlHelper.Utils
             }
             catch (Exception ex)
             {
-                throw ThrowSqlCommandException(sql, ex);
+                MessageBox.Show(ex.Message);
+                return string.Empty;
             }
         }
 
@@ -90,7 +100,7 @@ namespace SqlHelper.Utils
         /// Executar comandos SQL de INSERT, DELETE, UPDATE, etc.
         /// </summary>
         /// <returns>
-        /// 1 se o comando afetou linhas, 0 se não afetou nenhuma linha.
+        /// 1 se o comando afetou linhas, 0 se não afetou nenhuma linha e -1 em caso de exceção
         /// </returns>
         public static int ExecuteNonQuery(string sql)
         {
@@ -104,14 +114,9 @@ namespace SqlHelper.Utils
             }
             catch (Exception ex)
             {
-                throw ThrowSqlCommandException(sql, ex);
+                MessageBox.Show(ex.Message);
+                return -1;
             }
-        }
-
-        private static Exception ThrowSqlCommandException(string comandoSql, Exception exception)
-        {
-            string mensagem = $"Erro ao executar comando SQL: {comandoSql}. Detalhes: {exception.Message}";
-            return new Exception(mensagem, exception);
         }
     }
 }
