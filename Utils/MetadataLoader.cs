@@ -31,7 +31,7 @@ namespace SqlHelper.Utils
         /// </summary>
         public static void LoadTables(ObservableCollection<TableModel> tables, DatabaseModel database)
         {
-            if (database == null || string.IsNullOrWhiteSpace(database.Name))
+            if (!MetadataValidator.IsValidDatabase(database))
                 return;
 
             string sql = $@"
@@ -71,9 +71,7 @@ namespace SqlHelper.Utils
         /// </summary>
         public static void LoadColumns(ObservableCollection<ColumnModel> columns, DatabaseModel database, TableModel table)
         {
-            if (database == null || table == null)
-                return;
-            if (string.IsNullOrWhiteSpace(database.Name) || string.IsNullOrWhiteSpace(table.Schema) || string.IsNullOrWhiteSpace(table.Name))
+            if (!MetadataValidator.IsValidDatabase(database) || !MetadataValidator.IsValidTable(table))
                 return;
 
             string sql = @$"
