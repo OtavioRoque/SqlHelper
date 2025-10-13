@@ -70,7 +70,7 @@ namespace SqlHelper.Utils
         }
 
         /// <summary>
-        /// Carrega as colunas de uma tabela específica de um banco de dados.
+        /// Carrega o nome e o tipo das colunas de uma tabela específica.
         /// </summary>
         public static void LoadColumns(ObservableCollection<ColumnModel> columns, DatabaseModel database, TableModel table)
         {
