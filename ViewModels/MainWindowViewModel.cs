@@ -42,13 +42,13 @@ namespace SqlHelper.ViewModels
         #region Commands
 
         [RelayCommand]
-        private void ShowData(TableModel table)
+        private void ShowData()
         {
             TableData = DataLoader.LoadTableData(SelectedDatabase, SelectedTable);
         }
 
         [RelayCommand]
-        private void GenerateSelect(TableModel table)
+        private void GenerateSelect()
         {
             SelectedTabIndex = 1;
             CopyableTextBoxContent = "teste";

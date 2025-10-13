@@ -64,13 +64,11 @@
                     <ContextMenu x:Key="RowMenu">
                         <MenuItem
                             Header="Mostrar dados"
-                            Command="{Binding DataContext.ShowDataCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                            CommandParameter="{Binding}"/>
+                            Command="{Binding DataContext.ShowDataCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
 
                         <MenuItem
                             Header="Gerar SELECT"
-                            Command="{Binding DataContext.GenerateSelectCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                            CommandParameter="{Binding}"/>
+                            Command="{Binding DataContext.GenerateSelectCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
                     </ContextMenu>
                 </DataGrid.Resources>
 
