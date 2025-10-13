@@ -4,6 +4,9 @@ using System.Data;
 
 namespace SqlHelper.Utils
 {
+    /// <summary>
+    /// Contém métodos utilitários para carregar metadados do banco de dados, como bancos, tabelas e colunas.
+    /// </summary>
     public static class MetadataLoader
     {
         /// <summary>
