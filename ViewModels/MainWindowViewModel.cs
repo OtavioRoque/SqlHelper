@@ -44,8 +44,7 @@ namespace SqlHelper.ViewModels
         [RelayCommand]
         private void ShowData(TableModel table)
         {
-            string sql = $"SELECT TOP 300 * FROM [{SelectedDatabase.Name}].[{table.Schema}].[{table.Name}];";
-            TableData = SQL.FillDataTable(sql);
+            TableData = DataLoader.LoadTableData(SelectedDatabase, SelectedTable);
         }
 
         [RelayCommand]
