@@ -136,7 +136,7 @@
                     <DataGrid
                         Grid.Row="2"
                         AutoGenerateColumns="True"
-                        ItemsSource="{Binding TableData}"
+                        ItemsSource="{Binding TableView}"
                         HeadersVisibility="Column"
                         CanUserResizeRows="False"
                         IsReadOnly="True"/>

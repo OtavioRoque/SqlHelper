@@ -18,7 +18,7 @@ namespace SqlHelper.ViewModels
         private TableModel _selectedTable;
 
         [ObservableProperty]
-        private DataTable _tableData;
+        private DataView _tableView;
 
         [ObservableProperty]
         private int _selectedTabIndex;
@@ -44,7 +44,7 @@ namespace SqlHelper.ViewModels
         [RelayCommand]
         private void ShowData()
         {
-            TableData = DataLoader.LoadTableData(SelectedDatabase, SelectedTable);
+            TableView = DataLoader.LoadTableData(SelectedDatabase, SelectedTable).DefaultView;
         }
 
         [RelayCommand]
