@@ -2,7 +2,7 @@
 
 namespace SqlHelper.Models
 {
-    public class TableModel : ObservableObject
+    public class TableModel
     {
         public string Schema { get; }
         public string Name { get; }
