@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace SqlHelper.Models
+﻿namespace SqlHelper.Models
 {
     public class DatabaseModel
     {
