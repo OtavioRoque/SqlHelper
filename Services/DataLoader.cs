@@ -1,7 +1,7 @@
 ﻿using SqlHelper.Models;
 using System.Data;
 
-namespace SqlHelper.Utils
+namespace SqlHelper.Services
 {
     public static class DataLoader
     {

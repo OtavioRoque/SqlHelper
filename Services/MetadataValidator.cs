@@ -1,6 +1,6 @@
 ﻿using SqlHelper.Models;
 
-namespace SqlHelper.Utils
+namespace SqlHelper.Services
 {
     /// <summary>
     /// Consiste a validade dos metadados.

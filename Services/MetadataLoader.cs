@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 
-namespace SqlHelper.Utils
+namespace SqlHelper.Services
 {
     /// <summary>
     /// Contém métodos utilitários para carregar metadados do banco de dados, como bancos, tabelas e colunas.
