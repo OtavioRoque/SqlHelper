@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SqlHelper.Models;
-using SqlHelper.Utils;
+using SqlHelper.Services;
 using System.Collections.ObjectModel;
 using System.Data;
 
