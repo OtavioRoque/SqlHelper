@@ -15,7 +15,8 @@
 - **Models:** Classes de dados que representam as entidades do programa.
 - **Views:** Janelas (Windows) e Controles (UserControls) da interface gráfica.
 - **ViewModels:** Classes que implementam a lógica de apresentação (MVVM).
-- **Utils:** Classes auxiliares com métodos utilitários reutilizáveis.
+- **Utils:** Classes auxiliares com métodos utilitários gerais.
+- **Services:** Classes com métodos do utilitários do domínio do programa.
 - **Config:** Definições de connection strings e configurações globais.
 - **Resources:** Ícones, imagens e outros recursos.
 - **Properties:** Informações do AssemblyInfo.
