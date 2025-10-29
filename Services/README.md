@@ -1,2 +1,2 @@
 ## Services
-teste para conflito
+Contém classes estáticas específicas do domínio do aplicativo, geralmente utilizadas diretamente nas `ViewModels`.
