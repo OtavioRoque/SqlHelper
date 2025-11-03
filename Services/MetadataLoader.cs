@@ -36,10 +36,12 @@ namespace SqlHelper.Services
         /// <summary>
         /// Carrega as tabelas de um banco de dados específico, incluindo o esquema e contagem de linhas.
         /// </summary>
-        public static void LoadTables(ObservableCollection<TableModel> tables, DatabaseModel database)
+        public static IEnumerable<TableModel> LoadTables(DatabaseModel database)
         {
+            var tables = new List<TableModel>();
+
             if (!MetadataValidator.IsValidDatabase(database))
-                return;
+                return tables;
 
             string sql = $@"
                 SELECT
@@ -61,16 +63,16 @@ namespace SqlHelper.Services
 
             var dtTables = SQL.FillDataTable(sql);
 
-            tables.Clear();
-
             foreach (DataRow dr in dtTables.Rows)
             {
                 string schema = dr["SchemaName"].ToString() ?? string.Empty;
                 string name = dr["TableName"].ToString() ?? string.Empty;
                 long rowCount = PH.ToLong(dr["RowCount"].ToString() ?? string.Empty);
 
-                tables.Add(new TableModel(schema, name, rowCount));
+                tables.Add(new(schema, name, rowCount));
             }
+
+            return tables;
         }
 
         /// <summary>

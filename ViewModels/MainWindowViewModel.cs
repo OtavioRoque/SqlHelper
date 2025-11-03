@@ -26,8 +26,8 @@ namespace SqlHelper.ViewModels
         [ObservableProperty]
         private string _copyableTextBoxContent;
 
-        public ObservableCollection<DatabaseModel> Databases { get; } = new();
-        public ObservableCollection<TableModel> Tables { get; } = new();
+        public ObservableCollection<DatabaseModel> Databases { get; set; } = new();
+        public ObservableCollection<TableModel> Tables { get; set; } = new();
 
         public MainWindowViewModel()
         {
@@ -37,7 +37,10 @@ namespace SqlHelper.ViewModels
 
         partial void OnSelectedDatabaseChanged(DatabaseModel value)
         {
-            MetadataLoader.LoadTables(Tables, value);
+            var tables = MetadataLoader.LoadTables(value);
+            Tables.Clear();
+            foreach (var table in tables)
+                Tables.Add(table);
         }
 
         #region Commands
