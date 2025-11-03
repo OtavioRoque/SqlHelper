@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Data;
 
 #pragma warning disable CS8618
+#pragma warning disable IDE0028
 
 namespace SqlHelper.ViewModels
 {
