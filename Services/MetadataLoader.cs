@@ -34,8 +34,12 @@ namespace SqlHelper.Services
         }
 
         /// <summary>
-        /// Carrega as tabelas de um banco de dados específico, incluindo o esquema e contagem de linhas.
+        /// Busca o schema, o nome e a contagem de linhas de todas as tabelas de um banco de dados>.
         /// </summary>
+        /// <param name="database">O banco de dados onde serão buscadas as tabelas.</param>
+        /// <returns>
+        /// Uma coleção de objetos <see cref="TableModel"/> representando as tabelas encontradas.
+        /// </returns>
         public static IEnumerable<TableModel> LoadTables(DatabaseModel database)
         {
             var tables = new List<TableModel>();
@@ -76,8 +80,13 @@ namespace SqlHelper.Services
         }
 
         /// <summary>
-        /// Carrega o nome e o tipo das colunas de uma tabela específica.
+        /// Busca o schema, o nome e a contagem de linhas de todas as tabelas de um banco de dados>.
         /// </summary>
+        /// <param name="database">O banco de dados que contém a tabela onde serão buscadas as colunas.</param>
+        /// <param name="table">A tabela onde serão buscadas as colunas.</param>
+        /// <returns>
+        /// Uma coleção de objetos <see cref="TableModel"/> representando as tabelas encontradas.
+        /// </returns>
         public static IEnumerable<ColumnModel> LoadColumns(DatabaseModel database, TableModel table)
         {
             var columns = new List<ColumnModel>();
