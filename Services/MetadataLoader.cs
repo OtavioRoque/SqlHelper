@@ -78,10 +78,12 @@ namespace SqlHelper.Services
         /// <summary>
         /// Carrega o nome e o tipo das colunas de uma tabela específica.
         /// </summary>
-        public static void LoadColumns(ObservableCollection<ColumnModel> columns, DatabaseModel database, TableModel table)
+        public static IEnumerable<ColumnModel> LoadColumns(DatabaseModel database, TableModel table)
         {
+            var columns = new List<ColumnModel>();
+
             if (!MetadataValidator.IsValidDatabase(database) || !MetadataValidator.IsValidTable(table))
-                return;
+                return columns;
 
             string sql = @$"
                 SELECT 
@@ -95,15 +97,15 @@ namespace SqlHelper.Services
 
             var dtColumns = SQL.FillDataTable(sql);
 
-            columns.Clear();
-
             foreach (DataRow dr in dtColumns.Rows)
             {
                 string name = dr["COLUMN_NAME"].ToString() ?? string.Empty;
                 SqlDbType dataType = PH.ToSqlDbType(dr["DATA_TYPE"].ToString() ?? string.Empty);
 
-                columns.Add(new ColumnModel(name, dataType));
+                columns.Add(new(name, dataType));
             }
+
+            return columns;
         }
     }
 }
