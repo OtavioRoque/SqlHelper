@@ -31,15 +31,14 @@ namespace SqlHelper.ViewModels
 
         public MainWindowViewModel()
         {
-            var databases = MetadataLoader.LoadDatabases();
-            Databases = new ObservableCollection<DatabaseModel>(databases);
+            Databases = new ObservableCollection<DatabaseModel>(MetadataLoader.LoadDatabases());
         }
 
         partial void OnSelectedDatabaseChanged(DatabaseModel value)
         {
-            var tables = MetadataLoader.LoadTables(value);
             Tables.Clear();
-            foreach (var table in tables)
+
+            foreach (var table in MetadataLoader.LoadTables(value))
                 Tables.Add(table);
         }
 
