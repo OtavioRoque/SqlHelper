@@ -31,7 +31,8 @@ namespace SqlHelper.ViewModels
 
         public MainWindowViewModel()
         {
-            MetadataLoader.LoadDatabases(Databases);
+            var databases = MetadataLoader.LoadDatabases();
+            Databases = new ObservableCollection<DatabaseModel>(databases);
         }
 
         partial void OnSelectedDatabaseChanged(DatabaseModel value)

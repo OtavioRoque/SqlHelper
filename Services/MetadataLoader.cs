@@ -10,23 +10,27 @@ namespace SqlHelper.Services
     public static class MetadataLoader
     {
         /// <summary>
-        /// Carrega a lista de bancos de dados existentes no servidor SQL.
+        /// Busca o nome de todos os bancos de dados disponíveis no servidor.
         /// </summary>
-        public static void LoadDatabases(ObservableCollection<DatabaseModel> databases)
+        /// <returns>
+        /// Uma coleção de objetos <see cref="DatabaseModel"/> representando os bancos de dados encontrados.
+        /// </returns>
+        public static IEnumerable<DatabaseModel> LoadDatabases()
         {
+            var databases = new List<DatabaseModel>();
+
             string sql = "SELECT name FROM sys.databases";
             var dtDatabases = SQL.FillDataTable(sql);
-
-            databases.Clear();
-            databases.Add(new DatabaseModel(string.Empty));
 
             foreach (DataRow dr in dtDatabases.Rows)
             {
                 string databaseName = dr["name"].ToString() ?? string.Empty;
 
                 if (!string.IsNullOrWhiteSpace(databaseName))
-                    databases.Add(new DatabaseModel(databaseName));
+                    databases.Add(new(databaseName));
             }
+
+            return databases;
         }
 
         /// <summary>
