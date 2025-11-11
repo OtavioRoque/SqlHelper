@@ -4,8 +4,6 @@
 
 **SQL Helper** é uma ferramenta interna desenvolvida por mim na empresa **Transis Software**.
 
-> ⚠️ Pull requests não serão aceitas no momento.
-
 ## 🛠️ Tecnologias utilizadas
 - C#.
 - WPF.
