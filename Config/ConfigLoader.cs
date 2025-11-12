@@ -25,7 +25,7 @@ namespace SqlHelper.Config
             if (connectionString == null)
             {
                 string msg = $"A connection string '{connectionName}' não foi encontrada no arquivo '{localConfigPath}'." +
-                    Environment.NewLine + $"Certifique-se que App.Local.config tenha o name definido como '{connectionName}'.";
+                    Environment.NewLine + $"Certifique-se que App.Local.config tenha o name da connection string definido como '{connectionName}'.";
 
                 throw new ConfigurationErrorsException(msg);
             }
