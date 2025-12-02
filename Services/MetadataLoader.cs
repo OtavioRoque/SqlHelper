@@ -5,15 +5,15 @@ using System.Data;
 namespace SqlHelper.Services
 {
     /// <summary>
-    /// Contém métodos utilitários para carregar metadados do banco de dados, como bancos, tabelas e colunas.
+    /// Contains utility methods for loading database metadata such as databases, tables, and columns.
     /// </summary>
     public static class MetadataLoader
     {
         /// <summary>
-        /// Busca o nome de todos os bancos de dados disponíveis no servidor.
+        /// Retrieves the names of all databases available on the server.
         /// </summary>
         /// <returns>
-        /// Uma coleção de objetos <see cref="DatabaseModel"/> representando os bancos de dados encontrados.
+        /// A collection of <see cref="DatabaseModel"/> objects representing the databases found.
         /// </returns>
         public static IEnumerable<DatabaseModel> LoadDatabases()
         {
@@ -34,11 +34,11 @@ namespace SqlHelper.Services
         }
 
         /// <summary>
-        /// Busca o schema, o nome e a contagem de linhas de todas as tabelas de um banco de dados.
+        /// Retrieves the schema, name, and row count of all tables in a database.
         /// </summary>
-        /// <param name="database">O banco de dados onde serão buscadas as tabelas.</param>
+        /// <param name="database">The database where the tables will be queried.</param>
         /// <returns>
-        /// Uma coleção de objetos <see cref="TableModel"/> representando as tabelas encontradas.
+        /// A collection of <see cref="TableModel"/> objects representing the tables found.
         /// </returns>
         public static IEnumerable<TableModel> LoadTables(DatabaseModel database)
         {
@@ -80,12 +80,12 @@ namespace SqlHelper.Services
         }
 
         /// <summary>
-        /// Busca o nome e o tipo SQL de todas as colunas de uma tabela.
+        /// Retrieves the name and SQL type of all columns in a table.
         /// </summary>
-        /// <param name="database">O banco de dados que contém a tabela onde serão buscadas as colunas.</param>
-        /// <param name="table">A tabela onde serão buscadas as colunas.</param>
+        /// <param name="database">The database that contains the table whose columns will be queried.</param>
+        /// <param name="table">The table whose columns will be queried.</param>
         /// <returns>
-        /// Uma coleção de objetos <see cref="ColumnModel"/> representando as colunas encontradas.
+        /// A collection of <see cref="ColumnModel"/> objects representing the columns found.
         /// </returns>
         public static IEnumerable<ColumnModel> LoadColumns(DatabaseModel database, TableModel table)
         {

@@ -6,13 +6,13 @@ namespace SqlHelper.Services
     public static class DataLoader
     {
         /// <summary>
-        /// Carrega os dados de uma tabela específica, limitando o número máximo de linhas retornadas.
+        /// Loads data from a specific table, limiting the maximum number of returned rows.
         /// </summary>
-        /// <param name="database">Banco de dados onde a tabela está localizada.</param>
-        /// <param name="table">Tabela cujos dados serão carregados.</param>
-        /// <param name="maxRows">Número máximo de linhas a serem retornadas (padrão: 300).</param>
+        /// <param name="database">The database where the table is located.</param>
+        /// <param name="table">The table to load data from.</param>
+        /// <param name="maxRows">The maximum number of rows to return (default: 300).</param>
         /// <returns>
-        /// Um DataTable contendo os dados da tabela.
+        /// A DataTable containing the table data.
         /// </returns>
         public static DataTable LoadTableData(DatabaseModel database, TableModel table, int maxRows = 300)
         {

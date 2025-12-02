@@ -3,15 +3,15 @@
 namespace SqlHelper.Services
 {
     /// <summary>
-    /// Consiste a validade dos metadados.
+    /// Validates the metadata.
     /// </summary>
     public static class MetadataValidator
     {
         /// <summary>
-        /// Verifica se o banco de dados é diferente de null e tem um nome válido.
+        /// Checks whether the database is not null and has a valid name.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/> se o banco de dados for válido; caso contrário, <see langword="false"/>.
+        /// <see langword="true"/> if the database is valid; otherwise, <see langword="false"/>.
         /// </returns>
         public static bool IsValidDatabase(DatabaseModel database)
         {
@@ -19,10 +19,10 @@ namespace SqlHelper.Services
         }
 
         /// <summary>
-        /// Verifica se a tabela é diferente de null e tem um schema/nome válido.
+        /// Checks whether the table is not null and has a valid schema and name.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/> se o banco de dados for válido; caso contrário, <see langword="false"/>.
+        /// <see langword="true"/> if the table is valid; otherwise, <see langword="false"/>.
         /// </returns>
         public static bool IsValidTable(TableModel table)
         {
