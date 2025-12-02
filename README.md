@@ -1,27 +1,27 @@
 # SQL Helper
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
-![Platform](https://img.shields.io/badge/plataforma-Windows-blue)
+![Status](https://img.shields.io/badge/status-in%20development-yellow)
+![Platform](https://img.shields.io/badge/platform-Windows-blue)
 
-**SQL Helper** é uma ferramenta interna desenvolvida por mim na empresa **Transis Software**.
+**SQL Helper** is an internal tool developed by me at **Transis Software**.
 
-## 🛠️ Tecnologias utilizadas
+## 🛠️ Technologies Used
 - C#.
 - WPF.
 - SQL Server.
 
-## 📁 Pastas
-- **Models:** Classes de dados que representam as entidades do programa.
-- **Views:** Janelas (Windows) e Controles (UserControls) da interface gráfica.
-- **ViewModels:** Classes que implementam a lógica de apresentação (MVVM).
-- **Utils:** Classes auxiliares com métodos utilitários gerais.
-- **Services:** Classes com métodos do utilitários do domínio do programa.
-- **Config:** Definições de connection strings e configurações globais.
-- **Resources:** Ícones, imagens e outros recursos.
+## 📁 Folders
+- **Models:** Data classes that represent the program's entities.
+- **Views:** Windows and UserControls of the graphical interface.
+- **ViewModels:** Classes that implement the presentation logic (MVVM).
+- **Utils:** Helper classes with general utility methods.
+- **Services:** Classes containing domain-specific utility methods.
+- **Config:** Definitions of connection strings and global configurations.
+- **Resources:** Icons, images, and other assets.
 - **Properties:** Informações do AssemblyInfo.
   
-## 🎯 Objetivo
-O objetivo principal é criar uma ferramenta leve e prática para agilizar consultas em massa a bancos de dados SQL Server, facilitando o meu processo interno de migração de dados.
+## 🎯 Purpose
+The main goal is to create a lightweight and practical tool to speed up bulk SQL Server database queries, streamlining my internal data migration process.
 
-## 📌 Observações
-- Repositório público apenas para visualização.
-- As funcionalidades são pensadas para otimizar o meu processo interno de migração de dados entre bancos SQL Server.
+## 📌 Notes
+- Public repository for viewing only.
+- The features are designed to optimize my internal process of migrating data between SQL Server databases.
