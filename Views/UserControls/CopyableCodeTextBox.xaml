@@ -24,12 +24,12 @@
 
         <Button 
             x:Name="btnCopy"
-            Content="📋Copiar"
+            Content="📋Copy"
             Height="50"
             Width="150"
             FontFamily="Segoe UI Semibold"
             FontSize="24"
-            ToolTip="Copiar para a área de transferência"
+            ToolTip="Copy to clipboard"
             Margin="10"
             Background="Transparent"
             BorderThickness="0"

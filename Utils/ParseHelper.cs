@@ -3,15 +3,15 @@
 namespace SqlHelper.Utils
 {
     /// <summary>
-    /// Contém métodos utilitários para conversão de tipos.
+    /// Contains utility methods for type conversion.
     /// </summary>
     public static class ParseHelper
     {
         /// <summary>
-        /// Converte uma string em um int.
+        /// Converts a string to an int.
         /// </summary>
-        /// <param name="s">A string a ser convertida.</param>
-        /// <returns>O valor inteiro convertido ou 0 em caso de falha.</returns>
+        /// <param name="s">The string to convert.</param>
+        /// <returns>The converted integer value, or 0 if the conversion fails.</returns>
         public static int ToInt(string s)
         {
             _ = int.TryParse(s, out int result);
@@ -19,10 +19,10 @@ namespace SqlHelper.Utils
         }
 
         /// <summary>
-        /// Converte uma string em um long.
+        /// Converts a string to a long.
         /// </summary>
-        /// <param name="s">A string a ser convertida.</param>
-        /// <returns>O valor long convertido ou 0 em caso de falha.</returns>
+        /// <param name="s">The string to convert.</param>
+        /// <returns>The converted long value, or 0 if the conversion fails.</returns>
         public static long ToLong(string s)
         {
             _ = long.TryParse(s, out long result);
@@ -30,12 +30,13 @@ namespace SqlHelper.Utils
         }
 
         /// <summary>
-        /// Converte uma string representando um tipo SQL para o correspondente SqlDbType.
+        /// Converts a string representing an SQL type to its corresponding <see cref="SqlDbType"/>.
         /// </summary>
         /// <remarks>
-        /// É recomendado que o parâmetro sqlType seja a informação lida de um INFORMATION_SCHEMA.COLUMNS.DATA_TYPE.
+        /// It is recommended that the <paramref name="sqlType"/> value come from INFORMATION_SCHEMA.COLUMNS.DATA_TYPE.
         /// </remarks>
-        /// <param name="sqlType">O tipo da coluna.</param>
+        /// <param name="sqlType">The SQL column type.</param>
+        /// <returns>The corresponding <see cref="SqlDbType"/>.</returns>
         public static SqlDbType ToSqlDbType(string sqlType)
         {
             return sqlType.ToLower() switch

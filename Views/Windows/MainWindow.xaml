@@ -9,7 +9,6 @@
         Title="SQL Helper" Height="600" Width="1100"
         WindowStartupLocation="CenterScreen">
 
-    <!-- Grid principal, que divide a tela em dois lados -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -17,14 +16,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Lado esquerdo -->
+        <!-- Left side -->
         <Grid Grid.Column="0" Margin="10 10 0 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Cabecalho de definição de dabatase e filtro de colunas -->
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <ComboBox
                     Margin="0 0 0 10"
@@ -35,7 +33,6 @@
                 <userControls:ClearableTextBox Placeholder="Filtrar tabelas..."/>
             </StackPanel>
 
-            <!-- Datagrid das tabelas -->
             <DataGrid
                 Grid.Row="1"
                 Margin="0 10 0 0"
@@ -59,7 +56,6 @@
                         Binding="{Binding RowCount}"/>
                 </DataGrid.Columns>
 
-                <!-- ContextMenu -->
                 <DataGrid.Resources>
                     <ContextMenu x:Key="RowMenu">
                         <MenuItem
@@ -80,21 +76,19 @@
             </DataGrid>
         </Grid>
 
-        <!-- GridSplitter vertical que divide os dois lados da tela -->
         <GridSplitter 
             Grid.Column="1"
             Background="Transparent"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"/>
 
-        <!-- Lado direito -->
+        <!-- Right side -->
         <TabControl
             Grid.Column="2"
             Margin="0 10 10 10"
             SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}">
 
-            <!-- Consultas -->
-            <TabItem Header="Consultas">
+            <TabItem Header="Search">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -102,7 +96,6 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Filtros de busca da tabela selecionada -->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -112,27 +105,20 @@
                             <userControls:ClearableTextBox 
                                 Width="200"
                                 Margin="0 7 10 10"
-                                Placeholder="Buscar..."/>
+                                Placeholder="Search..."/>
 
                             <RadioButton 
-                                Content="Dados"
+                                Content="Data"
                                 VerticalAlignment="Center"
                                 Margin="0 0 10 0"/>
 
                             <RadioButton 
-                                Content="Colunas"
+                                Content="Metadata"
                                 VerticalAlignment="Center"
                                 Margin="0 0 10 0"/>
-
-                            <Button
-                                Content="Buscar"
-                                Height="26"
-                                Padding="2"
-                                Width="Auto"/>
                         </StackPanel>
                     </Grid>
 
-                    <!-- Datagrid dados da tabela selecionada -->
                     <DataGrid
                         Grid.Row="2"
                         AutoGenerateColumns="True"
@@ -143,7 +129,6 @@
                 </Grid>
             </TabItem>
 
-            <!-- Auto select -->
             <TabItem Header="Auto select">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -151,7 +136,6 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Cabeçalho: opções de qual tipo de importação -->
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -164,43 +148,44 @@
 
                         <RadioButton
                             Grid.Column="0"
-                            Content="Clientes"
+                            Content="Customer"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
 
                         <RadioButton
                             Grid.Column="1"
-                            Content="Produtos"
+                            Content="Product"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
 
                         <RadioButton
                             Grid.Column="2"
-                            Content="Contas a receber"
+                            Content="Accounts Receivable"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
 
                         <RadioButton
                             Grid.Column="3"
-                            Content="Contas a pagar"
+                            Content="Accounts payable"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
 
                         <RadioButton
                             Grid.Column="4"
-                            Content="Entradas"
+                            Content="Purchasing"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
 
                         <RadioButton
                             Grid.Column="5"
-                            Content="Saídas"
+                            Content="Sales"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"/>
                     </Grid>
 
-                    <!-- Txt com o código gerado no auto select -->
-                    <userControls:CopyableCodeTextBox Grid.Row="1" TextBoxContent="{Binding CopyableTextBoxContent, Mode=TwoWay}"/>
+                    <userControls:CopyableCodeTextBox
+                        Grid.Row="1"
+                        TextBoxContent="{Binding CopyableTextBoxContent, Mode=TwoWay}"/>
                 </Grid>
             </TabItem>
         </TabControl>

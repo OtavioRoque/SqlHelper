@@ -9,24 +9,25 @@ using System.Windows;
 namespace SqlHelper.Utils
 {
     /// <summary>
-    /// Contém métodos utilitários para acessar o banco de dados.
-    /// São úteis pra não ter que abrir uma SqlConnection manualmente.
+    /// Contains utility methods for database access.
+    /// Useful for avoiding the need to manually open a SqlConnection.
     /// </summary>
     /// <remarks>
-    /// Usar com o alias SQL.NomeMetodo().
+    /// Use with the alias SQL.MethodName().
     /// </remarks>
     public static class SqlExecutor
     {
         private static readonly string _connectionString = ConfigLoader.GetConnectionString();
 
         /// <summary>
-        /// Ler uma tabela do banco de dados usando uma consulta SQL.
+        /// Executes a SQL query and loads the result into a <see cref="DataTable"/>.
         /// </summary>
         /// <remarks>
-        /// Usar quando precisar fazer Bindings dos dados lidos.
+        /// Useful when you need a <see cref="DataTable"/> for data binding.
         /// </remarks>
+        /// <param name="sql">The SQL query to execute.</param>
         /// <returns>
-        /// Um DataTable contendo os resultados da consulta SQL.
+        /// A <see cref="DataTable"/> containing the query results, or <c>null</c> if an error occurs.
         /// </returns>
         public static DataTable FillDataTable(string sql)
         {
@@ -48,11 +49,15 @@ namespace SqlHelper.Utils
         }
 
         /// <summary>
-        /// Ler uma tabela do banco de dados usando uma consulta SQL.
+        /// Executes a SQL query and processes each row using the provided callback.
         /// </summary>
         /// <remarks>
-        /// Usar quando não precisar fazer Bindings dos dados lidos, é mais performático que FillDataTable.
+        /// Use this when you don't need data binding and want a more performant alternative to <see cref="FillDataTable"/>.
         /// </remarks>
+        /// <param name="sql">The SQL query to execute.</param>
+        /// <param name="processador">
+        /// A callback that receives a <see cref="SqlDataReader"/> positioned on each row returned by the query.
+        /// </param>
         public static void ExecuteReader(string sql, Action<SqlDataReader> processador)
         {
             try
@@ -74,10 +79,10 @@ namespace SqlHelper.Utils
         }
 
         /// <summary>
-        /// Buscar um único valor do banco de dados usando uma consulta SQL.
+        /// Executes a SQL query and retrieves the first column of the first row in the result set.
         /// </summary>
         /// <returns>
-        /// Uma string contendo o resultado da consulta SQL.
+        /// A string representation of the returned value, or an empty string if an error occurs.
         /// </returns>
         public static string ExecuteScalar(string sql)
         {
@@ -97,10 +102,10 @@ namespace SqlHelper.Utils
         }
 
         /// <summary>
-        /// Executar comandos SQL de INSERT, DELETE, UPDATE, etc.
+        /// Executes a SQL command such as INSERT, UPDATE, DELETE, or any non-query statement.
         /// </summary>
         /// <returns>
-        /// 1 se o comando afetou linhas, 0 se não afetou nenhuma linha e -1 em caso de exceção
+        /// The number of affected rows, or -1 if an exception occurs.
         /// </returns>
         public static int ExecuteNonQuery(string sql)
         {
