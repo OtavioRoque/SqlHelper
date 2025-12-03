@@ -92,7 +92,7 @@ namespace SqlHelper.Utils
                 using var cmd = new SqlCommand(sql, conn);
 
                 conn.Open();
-                return cmd.ExecuteScalar().ToString();
+                return cmd.ExecuteScalar()?.ToString() ?? string.Empty;
             }
             catch (Exception ex)
             {
