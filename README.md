@@ -2,7 +2,7 @@
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
 ![Platform](https://img.shields.io/badge/platform-Windows-blue)
 
-**SQL Helper** is an internal tool developed by me at **Transis Software**.
+**SQL Helper** is a personal internal tool developed to support and streamline internal SQL Server workflows.
 
 ## 🛠️ Technologies Used
 - C#.
