@@ -30,7 +30,7 @@
                     SelectedItem="{Binding SelectedDatabase, Mode=TwoWay}"
                     DisplayMemberPath="Name"/>
 
-                <userControls:ClearableTextBox Placeholder="Filtrar tabelas..."/>
+                <userControls:ClearableTextBox Placeholder="Filter tables..."/>
             </StackPanel>
 
             <DataGrid
@@ -46,7 +46,7 @@
 
                 <DataGrid.Columns>
                     <DataGridTextColumn
-                        Header="Tabela"
+                        Header="Table"
                         Width="3*"
                         Binding="{Binding Name}"/>
 
